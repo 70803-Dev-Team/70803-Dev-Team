@@ -11,7 +11,7 @@ package parkingapp;
 public class Suggestion {
     private String buildingName;
     
-    public static String findBuilding(String buildingName){
+    public static String table(){
         return "found";
     }
     public Suggestion(String name){

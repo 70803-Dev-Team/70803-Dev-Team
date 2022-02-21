@@ -38,7 +38,7 @@ public class ParkingApp extends HttpServlet {
             if ("TRUE".equals(cookies[0].getValue())){
                 out.println("<html><body><a href=\"RateLot\">Rate Lots</a><form action=\"ParkingApp\" method=\"get\">Enter the building you are looking for: <input type=\"text\" name=\"buildingName\"><br><input type=\"submit\" value=\"go\"><br>");
                 String buildingName = request.getParameter("buildingName");
-                out.println(parkingapp.FindBuilding.findBuilding(buildingName));
+                out.println(parkingapp.Suggestion.findBuilding(buildingName));
             } else {
                 out.println("User validation failed <a href=\"index.html\">Try again</a>");
             }

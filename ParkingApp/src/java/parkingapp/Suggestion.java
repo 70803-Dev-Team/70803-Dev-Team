@@ -8,9 +8,13 @@ package parkingapp;
  *
  * @author sam
  */
-public class FindBuilding {
+public class Suggestion {
+    private String buildingName;
+    
     public static String findBuilding(String buildingName){
         return "found";
     }
-    
+    public Suggestion(String name){
+        buildingName = name;
+    }
 }

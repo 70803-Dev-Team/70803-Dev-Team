@@ -4,13 +4,10 @@
  */
 package parkingapp;
 
-/**
- *
- * @author sam
- */
+// @author Sam Hildebrand
 public class DataBase {
-    public User getUser(String userName){
-        User user = new User("test Name", "test Password");
+    public static User getUser(String userName){
+        User user = new User(userName, "password");
         return user;
     }
     public Suggestion getSuggestion(String lotName){

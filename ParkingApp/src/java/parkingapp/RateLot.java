@@ -12,10 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author sam
- */
+// @author Sam Hildebrand
 @WebServlet(name = "RateLot", urlPatterns = {"/RateLot"})
 public class RateLot extends HttpServlet {
 

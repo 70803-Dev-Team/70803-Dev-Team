@@ -4,10 +4,7 @@
  */
 package parkingapp;
 
-/**
- *
- * @author sam
- */
+// @author Sam Hildebrand
 public class User {
     private String userName;
     private String password;    
@@ -18,5 +15,9 @@ public class User {
     }
     boolean isValidUser(){
        return userName != null;
+    }
+
+    boolean compareTo(User comparingUser) {
+        return comparingUser.password.equals(password);
     }
 }

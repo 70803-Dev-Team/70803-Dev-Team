@@ -1,6 +1,7 @@
 package parkingapp;
 
 
+// @author Luke LeGoullon
 public class ParkingLot {
    
     private String name;

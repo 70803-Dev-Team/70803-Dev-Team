@@ -13,10 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author sam
- */
+// @author Sam Hildebrand
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
 
@@ -36,7 +33,8 @@ public class Login extends HttpServlet {
             String userName = request.getParameter("userName");
             String password = request.getParameter("password");
             User loginUser = new User(userName, password);
-            if (loginUser.isValidUser()){
+            User databaseUser = parkingapp.DataBase.getUser(userName);
+            if (loginUser.compareTo(databaseUser)){
                 Cookie userCookie=new Cookie("Valid", "TRUE");
                 response.addCookie(userCookie);
                 response.sendRedirect("ParkingApp");

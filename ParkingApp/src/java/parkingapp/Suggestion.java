@@ -4,10 +4,7 @@
  */
 package parkingapp;
 
-/**
- *
- * @author sam
- */
+// @author Sam Hildebrand
 public class Suggestion {
     private String buildingName;
     

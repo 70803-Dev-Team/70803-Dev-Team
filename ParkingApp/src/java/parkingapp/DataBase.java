@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package parkingapp;
 
 // @author Sam Hildebrand
@@ -13,5 +9,9 @@ public class DataBase {
     public Suggestion getSuggestion(String lotName){
         Suggestion suggestion = new Suggestion(lotName);
         return suggestion;
+    }
+    
+    public static void storeRating(int rating){
+        
     }
 }

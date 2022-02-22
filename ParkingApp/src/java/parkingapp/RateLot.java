@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package parkingapp;
 
 import java.io.IOException;
@@ -36,7 +32,9 @@ public class RateLot extends HttpServlet {
             out.println("<title>Servlet RateLot</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Let's Rate Some Lots!!</h1>");
+            out.println("<html><body><a href=\"RateLot\">Rate Lots</a><form action=\"RateLot\" method=\"get\">Give your rating: <input type=\"text\" name=\"rating\"><br><input type=\"submit\" value=\"go\"><br>");
+            String rating = request.getParameter("rating");
+            DataBase.storeRating(1);
             out.println("</body>");
             out.println("</html>");
         }

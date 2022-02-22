@@ -39,7 +39,7 @@ public class ParkingApp extends HttpServlet {
                 out.println("<html><body><a href=\"RateLot\">Rate Lots</a><form action=\"ParkingApp\" method=\"get\">Enter the building you are looking for: <input type=\"text\" name=\"buildingName\"><br><input type=\"submit\" value=\"go\"><br>");
                 String buildingName = request.getParameter("buildingName");
                 Suggestion suggestion = new Suggestion("buildingName");
-                out.println(parkingapp.Suggestion.table());
+                out.println(suggestion.toArray());
             } else {
                 out.println("User validation failed <a href=\"index.html\">Try again</a>");
             }

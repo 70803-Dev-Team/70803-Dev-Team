@@ -11,7 +11,7 @@ package parkingapp;
 public class Suggestion {
     private String buildingName;
     
-    public static String table(){
+    public String toArray(){
         return "found";
     }
     public Suggestion(String name){

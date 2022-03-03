@@ -1,6 +1,8 @@
 package parkingapp;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 // @author Sam Hildebrand
 public class DataBase { 
@@ -26,7 +28,15 @@ public class DataBase {
     }
     
     public User getUser(String userName){
-        User user = new User(userName, "password");
+        String password = "";
+        try {
+            ResultSet rs = statement.executeQuery("SELECT * FROM users WHERE UserName=\"" + userName + "\";");
+            rs.next();
+            password = rs.getString("Password");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        User user = new User(userName, password);
         return user;
     }
     public Suggestion getSuggestion(String lotName){

@@ -27,16 +27,21 @@ public class RateLot extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.println("<title>Rate Lots</title>"); 
-            out.println("<!DOCTYPE html><html><head>");
-            out.println("<title>Servlet RateLot</title>");            
-            out.println("</head><body>");
-            out.println("<html><body><a href=\"ParkingApp\">Find Parking</a><form action=\"RateLot\" method=\"get\">Lot: <input type=\"text\" name=\"lotName\"> Fullness (1-5): <input type=\"text\" name=\"rating\"><br><input type=\"submit\" value=\"go\"><br>");
-            String rating = request.getParameter("rating");
-            String lotName = request.getParameter("lotName");
             Cookie cookies[] = request.getCookies();
             DataBase db = new DataBase();
-            db.storeRating(lotName, cookies[1].getValue(), rating);
-            out.println("</body></html>");
+            User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
+            User dbUser = db.getUser(cookies[0].getValue());
+            if (dbUser.compareTo(currentUser)){
+                out.println("<!DOCTYPE html><html><head>");            
+                out.println("</head><body>");
+                out.println("<html><body><a href=\"ParkingApp\">Find Parking</a><form action=\"RateLot\" method=\"get\">Lot: <input type=\"text\" name=\"lotName\"> Fullness (1-5): <input type=\"text\" name=\"rating\"><br><input type=\"submit\" value=\"go\"><br>");
+                String rating = request.getParameter("rating");
+                String lotName = request.getParameter("lotName");
+                db.storeRating(lotName, cookies[1].getValue(), rating);
+                out.println("</body></html>");
+            } else {
+                response.sendRedirect("index.html");
+            }
         }
     }
 

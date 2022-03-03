@@ -11,6 +11,9 @@ public class DataBase {
     private Connection con;
     private Statement statement;
     
+    // Constructor. This creates the connection to the database. 
+    // All other fuctions are object oriented and will look something like
+    // db.storeRating() see RateLot.java for an example.
     public DataBase(){
         try {
             Class.forName(driver);
@@ -32,9 +35,16 @@ public class DataBase {
     }
     
     public void storeRating(String ParkingLot, String UserName, String rating){
+        //Anytime you need to access the database you can surround it in this
+        //try catch statment
         try {
-            statement.execute("INSERT INTO ratings (ParkingLot, UserName, Rating) VALUES (\""
-            + ParkingLot + "\", \"" + UserName + "\", \"" + rating + "\");");
+            //The constructor creates "statement". To make an sql call, just 
+            //pass a string to statement.execute("your call here");
+            statement.execute("INSERT INTO ratings (ParkingLot, UserName, "
+                    + "DayOfWeek, Month, DayOfMonth, Year, Rating) VALUES (\""
+                    + ParkingLot + "\", \"" + UserName + "\", "
+                    + "DAYOFWEEK(CURRENT_DATE), MONTH(CURRENT_DATE), "
+                    + "DAY(CURRENT_DATE), YEAR(CURRENT_DATE), \"" + rating + "\");");
         } catch (Exception e) {
             e.printStackTrace();
         }

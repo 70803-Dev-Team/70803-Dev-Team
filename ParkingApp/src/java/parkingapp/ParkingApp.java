@@ -26,10 +26,15 @@ public class ParkingApp extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            out.println("<title>ParkingApp</title>");      
+            out.println("<title>ParkingApp</title>");  
+            // Anytime we have a webapp java file like this one, we need to check
+            // that the user is actually valid. So we check the cookies and test
+            // the user against the one in the database like so.
             Cookie cookies[] = request.getCookies();
-            if ("TRUE".equals(cookies[0].getValue())){
-                DataBase db = new DataBase();
+            DataBase db = new DataBase();
+            User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
+            User dbUser = db.getUser(cookies[0].getValue());
+            if (dbUser.compareTo(currentUser)){
                 out.println("<html><body>"
                         + "<a href=\"RateLot\">Rate Lots</a>"
                         + "<form action=\"ParkingApp\" method=\"get\">"
@@ -42,7 +47,6 @@ public class ParkingApp extends HttpServlet {
             } else {
                 response.sendRedirect("index.html");
             }
-
         }
     }
 

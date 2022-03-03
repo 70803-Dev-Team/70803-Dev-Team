@@ -32,10 +32,10 @@ public class Login extends HttpServlet {
             DataBase db = new DataBase();
             User databaseUser = db.getUser(userName);
             if (loginUser.compareTo(databaseUser)){
-                Cookie validCookie=new Cookie("Valid", "TRUE");
-                response.addCookie(validCookie);
                 Cookie nameCookie=new Cookie("UserName", userName);
+                Cookie passwordCookie=new Cookie("Password", password);
                 response.addCookie(nameCookie);
+                response.addCookie(passwordCookie);
                 response.sendRedirect("ParkingApp");
             } else {
                 response.sendRedirect("index.html");

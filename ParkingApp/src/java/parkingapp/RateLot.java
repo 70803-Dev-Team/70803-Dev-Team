@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,18 +26,17 @@ public class RateLot extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
+            out.println("<title>Rate Lots</title>"); 
+            out.println("<!DOCTYPE html><html><head>");
             out.println("<title>Servlet RateLot</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<html><body><a href=\"RateLot\">Rate Lots</a><form action=\"RateLot\" method=\"get\">Give your rating: <input type=\"text\" name=\"rating\"><br><input type=\"submit\" value=\"go\"><br>");
+            out.println("</head><body>");
+            out.println("<html><body><a href=\"ParkingApp\">Find Parking</a><form action=\"RateLot\" method=\"get\">Lot: <input type=\"text\" name=\"lotName\"> Fullness (1-5): <input type=\"text\" name=\"rating\"><br><input type=\"submit\" value=\"go\"><br>");
             String rating = request.getParameter("rating");
-            DataBase.storeRating(1);
-            out.println("</body>");
-            out.println("</html>");
+            String lotName = request.getParameter("lotName");
+            Cookie cookies[] = request.getCookies();
+            DataBase db = new DataBase();
+            db.storeRating(lotName, cookies[1].getValue(), rating);
+            out.println("</body></html>");
         }
     }
 

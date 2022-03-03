@@ -29,12 +29,18 @@ public class ParkingApp extends HttpServlet {
             out.println("<title>ParkingApp</title>");      
             Cookie cookies[] = request.getCookies();
             if ("TRUE".equals(cookies[0].getValue())){
-                out.println("<html><body><a href=\"RateLot\">Rate Lots</a><form action=\"ParkingApp\" method=\"get\">Enter the building you are looking for: <input type=\"text\" name=\"buildingName\"><br><input type=\"submit\" value=\"go\"><br>");
+                DataBase db = new DataBase();
+                out.println("<html><body>"
+                        + "<a href=\"RateLot\">Rate Lots</a>"
+                        + "<form action=\"ParkingApp\" method=\"get\">"
+                        + "Enter the building you are looking for: "
+                        + "<input type=\"text\" name=\"buildingName\"><br>"
+                        + "<input type=\"submit\" value=\"go\"><br>");
                 String buildingName = request.getParameter("buildingName");
-                Suggestion suggestion = new Suggestion("buildingName");
+                Suggestion suggestion = db.getSuggestion(buildingName);
                 out.println(suggestion.toArray());
             } else {
-                out.println("User validation failed <a href=\"index.html\">Try again</a>");
+                response.sendRedirect("index.html");
             }
 
         }

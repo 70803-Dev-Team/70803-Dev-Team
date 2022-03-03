@@ -37,7 +37,7 @@ public class RateLot extends HttpServlet {
                 out.println("<html><body><a href=\"ParkingApp\">Find Parking</a><form action=\"RateLot\" method=\"get\">Lot: <input type=\"text\" name=\"lotName\"> Fullness (1-5): <input type=\"text\" name=\"rating\"><br><input type=\"submit\" value=\"go\"><br>");
                 String rating = request.getParameter("rating");
                 String lotName = request.getParameter("lotName");
-                db.storeRating(lotName, cookies[1].getValue(), rating);
+                db.storeRating(lotName, cookies[0].getValue(), rating);
                 out.println("</body></html>");
             } else {
                 response.sendRedirect("index.html");

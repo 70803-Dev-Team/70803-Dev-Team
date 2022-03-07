@@ -3,7 +3,8 @@ package parkingapp;
 // @author Sam Hildebrand
 public class User {
     private String userName;
-    private String password;    
+    private String password;
+    private Preferences userPreferences;
     
     public User(String name, String passwd){
         userName = name;

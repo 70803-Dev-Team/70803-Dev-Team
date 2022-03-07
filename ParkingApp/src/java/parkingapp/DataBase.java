@@ -1,8 +1,6 @@
 package parkingapp;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 // @author Sam Hildebrand
 public class DataBase { 

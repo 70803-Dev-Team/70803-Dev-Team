@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <title>LSU Parking Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;600;700&display=swap" 
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-----Website Header----->
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="Images/company-logo1.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="login.html">PARK NOW</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu"></i>
+        </nav>
+    <div class="text-box">
+        <h1>Welcome, to the LSU Parking Assistant!</h1>
+            <p>
+                This platform was designed to alleviate the troubles of parking on campus.
+            </p>
+    </div>
+    </section>
+
+<!----Information Section---->
+    <section class="platform-info">
+        <h1>How does it work?</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pellentesque nibh eu erat venenatis vulputate. 
+            Donec viverra elit vel mauris eleifend, a pulvinar est porttitor. Proin nec mauris sit amet sem sollicitudin auctor. 
+            Aenean velit odio, congue eget elit id, mollis sagittis purus. Aliquam non leo mauris. Sed facilisis felis.
+        </p>
+        <div class="row">
+            <div class="info-col">
+                <h3>You arrive to campus...</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec augue ex. Donec et sollicitudin.
+                </p>
+            </div>
+            <div class="info-col">
+                <h3>and report how full a certain lot is!</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec augue ex. Donec et sollicitudin.
+                </p>
+            </div>
+            <div class="info-col">
+                <h3>Therefore, helping others!</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec augue ex. Donec et sollicitudin.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+<!-----Testimonies Section----->
+<section>
+    <div class="wrapper">
+        <h1>What Our Users have to Say</h1>
+        <h2>Aliquam pellentesque nibh eu erat venenatis vulputate. 
+            Donec viverra elit vel mauris eleifend, a pulvinar est porttitor. Proin nec mauris sit amet sem sollicitudin auctor. 
+            Aenean velit odio, congue eget elit id, mollis sagittis purus.</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="Images/testi1.jpeg">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec augue ex. Donec et sollicitudin.</p>
+                <h3>Johnathon S.</h3>
+                <h4>Graduate Student</h4>
+            </div>
+            <div class="card">
+                <img src="Images/testi2.jpeg">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec augue ex. Donec et sollicitudin.</p>
+                <h3>Mary M.</h3>
+                <h4>Junior</h4>
+            </div>
+            <div class="card">
+                <img src="Images/testi3.jpeg">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec augue ex. Donec et sollicitudin.</p>
+                <h3>Olivia G. & Lexi E.</h3>
+                <h4>Senior & Senior</h4>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-----Website Footer----->
+    <section class="footer">
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p><i class="fa fa-copyright"></i>2022 70803 Dev Team, Inc. All Rights Reserved</p>
+    </section>
+
+<!-----Javascript for the toggle menu----->
+<script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu(){
+        navLinks.style.right = "0";
+    }
+    function hideMenu(){
+        navLinks.style.right = "-200px";
+    }
+</script>
+
+</body>
+</html>

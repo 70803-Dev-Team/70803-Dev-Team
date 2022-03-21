@@ -1,55 +1,38 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package parkingapp;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
+import java.io.InputStream;
+import jakarta.servlet.annotation.MultipartConfig;
+import java.io.FileOutputStream;
 
 // @author Sam Hildebrand
-@WebServlet(name = "ParkingApp", urlPatterns = {"/ParkingApp"})
-public class ParkingApp extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+@WebServlet(name = "buildingsUploadWeblet", urlPatterns = {"/buildingsUploadWeblet"})
+@MultipartConfig
+public class buildingsUploadWeblet extends HttpServlet {
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<title>ParkingApp</title>");  
-            // Anytime we have a webapp java file like this one, we need to check
-            // that the user is actually valid. So we check the cookies and test
-            // the user against the one in the database like so.
+        try ( PrintWriter out = response.getWriter()) {
+            out.println("<title>Rate Lots</title>"); 
             Cookie cookies[] = request.getCookies();
             DataBase db = new DataBase();
             User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
-            User dbUser = db.getUser(cookies[0].getValue());
+            User dbUser = db.getUser("lucas");
             if (dbUser.compareTo(currentUser)){
-                out.println("<html><body>"
-                        + "<a href=\"RateLot\">Rate Lots</a>"
-                        + "<form action=\"ParkingApp\" method=\"get\">"
-                        + "Enter the building you are looking for: "
-                        + "<input type=\"text\" name=\"buildingName\"><br>"
-                        + "<input type=\"submit\" value=\"go\"><br>");
-                String buildingName = request.getParameter("buildingName");
-                Suggestion suggestion = db.getSuggestion(buildingName);
-                out.println(suggestion.toArray());
-                out.println("<br>");
-                if (currentUser.compareTo(db.getUser("lucas"))){
-                    out.println("<a href=\"buildingsUploadWeblet\">Upload a Buildings File</a>");
-                }
-            } else {
-                response.sendRedirect("index.html");
+                out.println("<form id=\"upload\" method=\"POST\" action=\"BFprocessingWeblet\" enctype=\"multipart/form-data\">\n" +
+                    "<input type=\"file\" id=\"file\" name=\"file\" />\n" +
+                    "<br/>\n" +
+                    "<input type=\"submit\" id=\"uploadFile\" value=\"Upload\" />\n" +
+                    "</form>");
             }
         }
     }

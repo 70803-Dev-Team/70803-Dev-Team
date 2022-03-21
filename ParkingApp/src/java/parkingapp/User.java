@@ -15,6 +15,6 @@ public class User {
     }
 
     boolean compareTo(User comparingUser) {
-        return comparingUser.password.equals(password);
+        return comparingUser.password.equals(password) && comparingUser.userName.equals(userName);
     }
 }

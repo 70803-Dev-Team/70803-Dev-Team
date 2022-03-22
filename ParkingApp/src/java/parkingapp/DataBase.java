@@ -57,4 +57,13 @@ public class DataBase {
             e.printStackTrace();
         }
     }
+    
+    public void addUser(String userName, String password){
+        try {
+            statement.execute("INSERT INTO users (UserName, Password)"
+                    + " VALUES (\"" + userName + "\", \"" + password + "\");");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -25,16 +25,18 @@ public class AccountRegistration extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        DataBase db = new DataBase();
         try ( PrintWriter out = response.getWriter()) {
             String userName = request.getParameter("userName");
             String password1 = request.getParameter("password1");
             String password2 = request.getParameter("password2");
             if (password1.equals(password2)){
                 User newUser = new User(userName, password1);
-                DataBase db = new DataBase();
                 User databaseUser = db.getUser(userName);
                 if (newUser.compareTo(databaseUser)){
                     out.println("That user is already in the database");
+                } else {
+                    db.addUser(userName, password1);
                 }
                 
             } else {

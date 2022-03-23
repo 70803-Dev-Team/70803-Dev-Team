@@ -11,10 +11,12 @@ public class DataBase {
     private Connection con;
     private Statement statement;
     
-    // Constructor. This creates the connection to the database. 
-    // All other fuctions are object oriented and will look something like
-    // db.storeRating() see RateLot.java for an example.
-    public DataBase(){
+    
+    // Singlton design pattern. Call DataBase.getInstance() to get db object
+    // to access the database functions.
+    private static DataBase db;
+  
+    private DataBase(){
         try {
             Class.forName(driver);
             con=DriverManager.getConnection(url, userName, password);
@@ -24,6 +26,14 @@ public class DataBase {
           e.printStackTrace();
         }
     }
+    
+    public static DataBase getInstance(){
+        if (db == null){
+            db = new DataBase();
+        }
+        return db;
+    }
+    // end singlton design pattern
     
     public User getUser(String userName){
         String password = "";

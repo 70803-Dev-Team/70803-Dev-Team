@@ -31,7 +31,7 @@ public class ParkingApp extends HttpServlet {
             // that the user is actually valid. So we check the cookies and test
             // the user against the one in the database like so.
             Cookie cookies[] = request.getCookies();
-            DataBase db = new DataBase();
+            DataBase db = DataBase.getInstance();
             User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
             User dbUser = db.getUser(cookies[0].getValue());
             if (dbUser.compareTo(currentUser)){

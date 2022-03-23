@@ -28,7 +28,7 @@ public class RateLot extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             out.println("<title>Rate Lots</title>"); 
             Cookie cookies[] = request.getCookies();
-            DataBase db = new DataBase();
+            DataBase db = DataBase.getInstance();
             User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
             User dbUser = db.getUser(cookies[0].getValue());
             if (dbUser.compareTo(currentUser)){

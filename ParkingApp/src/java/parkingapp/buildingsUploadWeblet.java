@@ -24,7 +24,7 @@ public class buildingsUploadWeblet extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             out.println("<title>Rate Lots</title>"); 
             Cookie cookies[] = request.getCookies();
-            DataBase db = new DataBase();
+            DataBase db = DataBase.getInstance();
             User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
             User dbUser = db.getUser("lucas");
             if (dbUser.compareTo(currentUser)){

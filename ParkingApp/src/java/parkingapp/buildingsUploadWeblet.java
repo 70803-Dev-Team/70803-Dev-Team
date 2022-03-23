@@ -23,17 +23,17 @@ public class buildingsUploadWeblet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             out.println("<title>Rate Lots</title>"); 
-            Cookie cookies[] = request.getCookies();
+            //Cookie cookies[] = request.getCookies();
             DataBase db = DataBase.getInstance();
-            User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
-            User dbUser = db.getUser("lucas");
-            if (dbUser.compareTo(currentUser)){
+            //User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
+            //User dbUser = db.getUser("lucas");
+            //if (dbUser.compareTo(currentUser)){
                 out.println("<form id=\"upload\" method=\"POST\" action=\"BFprocessingWeblet\" enctype=\"multipart/form-data\">\n" +
                     "<input type=\"file\" id=\"file\" name=\"file\" />\n" +
                     "<br/>\n" +
                     "<input type=\"submit\" id=\"uploadFile\" value=\"Upload\" />\n" +
                     "</form>");
-            }
+            //}
         }
     }
 

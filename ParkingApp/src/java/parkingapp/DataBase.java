@@ -47,6 +47,16 @@ public class DataBase {
         User user = new User(userName, password);
         return user;
     }
+    
+        public void addUser(String userName, String password){
+        try {
+            statement.execute("INSERT INTO users (UserName, Password)"
+                    + " VALUES (\"" + userName + "\", \"" + password + "\");");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+        
     public Suggestion getSuggestion(String lotName){
         Suggestion suggestion = new Suggestion(lotName);
         return suggestion;
@@ -68,12 +78,16 @@ public class DataBase {
         }
     }
     
-    public void addUser(String userName, String password){
+    public int getRating(String parkingLot){
+        int ratingInt = 0;
         try {
-            statement.execute("INSERT INTO users (UserName, Password)"
-                    + " VALUES (\"" + userName + "\", \"" + password + "\");");
+            ResultSet rs = statement.executeQuery("SELECT * FROM users WHERE ParkingLot=\"" + parkingLot + "\";");
+            rs.next();
+            String rating = rs.getString("Rating");
+            ratingInt = Integer.parseInt(rating);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return ratingInt;
     }
 }

@@ -100,7 +100,7 @@ public class AccountRegistration extends HttpServlet {
             if (password1.equals(password2)){
                 User newUser = new User(userName, password1);
                 User databaseUser = db.getUser(userName);
-                if (newUser.compareTo(databaseUser)){
+                if (databaseUser != null){
                     out.println(displayLoginForm("Username Already Taken"));
                 } else {
                     db.addUser(userName, password1);

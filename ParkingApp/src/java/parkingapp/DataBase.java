@@ -36,13 +36,16 @@ public class DataBase {
     // end singlton design pattern
     
     public User getUser(String userName){
-        String password = "";
+        String password = null;
         try {
             ResultSet rs = statement.executeQuery("SELECT * FROM users WHERE UserName=\"" + userName + "\";");
             rs.next();
             password = rs.getString("Password");
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        if (password == null){
+            return null;
         }
         User user = new User(userName, password);
         return user;

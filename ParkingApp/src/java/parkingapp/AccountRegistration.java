@@ -35,7 +35,9 @@ public class AccountRegistration extends HttpServlet {
                     "        <div class=\"content\">\n" +
                     "            <header>Create Account</header>\n" +
                     "            <form action=\"AccountRegistration\">\n" +
+                    "             <h2>" +
                                     errorMessage +
+                    "             </h2>" +
                     "                <div class=\"field space\">\n" +
                     "                    <input type=\"text2\" class=\"name\" placeholder=\"First Name\">\n" +
                     "                </div>\n" +

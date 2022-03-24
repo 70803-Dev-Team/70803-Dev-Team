@@ -1,31 +1,46 @@
 package parkingapp;
 
 
-// @author Luke LeGoullon
 public class ParkingLot {
    
     private String name;
-    private int spotsAvailable;
-    private int spotsOccupied;
-    private double percentFull;
     private int capacity;
-    public boolean isFavorite;
-
-    public ParkingLot(String lotName, double percentFull, int capacity) {
-        
+    private boolean isFavorite; //stretch feature
+    private double averageRating;
+    
+    //Does each parking lot have an arrayList of Lot ratings at that time?
+    public ParkingLot(String lotName, double lotPercentFull, int lotCapacity) {
+        name = lotName;
+        capacity = lotCapacity;
     }
     
     public ParkingLot(String lotName){
-        
+        name = lotName;
     }
-    
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public boolean getFavorite() {
+        return isFavorite;
+    }
+
+    public double getAverageRating() {
+        return averageRating;
+    }
+   
     public void favoriteLot(boolean favorite){
         isFavorite = favorite;
     }
     
-    public void reportOccupancy(double percentOccupied){
-        percentFull = percentOccupied;
+    public void addLotRating(double rating){
+        
     }
     
-    
+
 }

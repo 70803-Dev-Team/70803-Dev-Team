@@ -18,8 +18,8 @@ public class Suggestion implements Comparable<Suggestion>{
     public Suggestion(ParkingLot parkLot, String nameOfBuilding){
         lot = parkLot;
         buildingName = nameOfBuilding;
-        totalParkTime = Lots_Calc.CalculateTime(lot, buildingName); //Static method from the lot calculator class
-        score = Lots_Calc.CalculateScore(lot, buildingName, totalParkTime);
+        //totalParkTime = Lots_Calc.CalculateTime(lot, buildingName); //Static method from the lot calculator class
+        //score = Lots_Calc.CalculateScore(lot, buildingName, totalParkTime);
     }
     
     public double getScore(){

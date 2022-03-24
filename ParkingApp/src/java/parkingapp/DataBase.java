@@ -61,7 +61,7 @@ public class DataBase {
     }
         
     public Suggestion getSuggestion(String lotName){
-        Suggestion suggestion = new Suggestion(lotName);
+        Suggestion suggestion = null;
         return suggestion;
     }
     

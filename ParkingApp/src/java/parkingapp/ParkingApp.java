@@ -66,7 +66,7 @@ public class ParkingApp extends HttpServlet {
                 "                <li><a href=\"#\">General Settings</a></li>\n" +
                 "                <li><a href=\"#\">Account Settings</a></li>\n" +
                 "                <li><a href=\"#\">Help Center</a></li>\n" +
-                "                <li><a href=\"#\">Report an issue</a></li>\n" +
+                "                <li><a href=\"https://github.com/70803-Dev-Team/70803-Dev-Team/issues\">Report an issue</a></li>\n" +
                 "                <li><a href=\"#\">Log out</a></li>\n" +
                 "                <li class=\"small\"><i class=\"fa fa-copyright\"></i>2022 70803 Dev Team, Inc. All Rights Reserved</a></li>\n" +
                 "              </ul>\n" +

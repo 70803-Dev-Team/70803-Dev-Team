@@ -83,10 +83,10 @@ public class ParkingApp extends HttpServlet {
                 "                        <input type=\"input\" class=\"form_field\" placeholder=\"Building you want to go to\" name=\"buildingName\">\n" +
                 "                        <label for=\"name\" class=\"form_label\">Building you want to go to</label>\n" +
                 "                    </p>\n" +
-                "                </form> \n" +
                 "                <p class=\"field\">\n" +
                 "                    <input type=\"submit\" value=\"Go!\">\n" +
                 "                </p>\n" +
+                "                </form> \n" +
                 "                <p class=\"rateLot\">\n" +
                 "                    <a href=\"RateLot\">Rate a Parking Lot</a>\n" +
                 "                </p>\n" +

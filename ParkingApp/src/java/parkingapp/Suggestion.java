@@ -5,7 +5,7 @@ import java.util.*;
 
 /**
  *
- * @author Sam and Luke LeGoullon
+ * @author Sam Hildebrand and Luke LeGoullon
  */
 public class Suggestion implements Comparable<Suggestion>{    
     

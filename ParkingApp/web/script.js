@@ -1,27 +1,31 @@
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2VhbmNoYXBwZWxsMTciLCJhIjoiY2wxMW9yMGo2MnU0ajNicnBqbHdyNTJpNyJ9.WWNA7X3FVJWjMN35no373w';
 
-// navigator.geolocation.getCurrentPosition(successLocation, 
-//     errorLocation, {
-//         enableHighAccuracy: true
-//     })
-
-// function successLocation(position){
-//     console.log(position)
-//     setupMap([position.coords.longitude, position.coords.latitude])
-// }
-
-// function errorLocation(){
-//     setupMap([30.41, 91.18])
-// }
-
-
+// Creating the map
 const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/seanchappell17/cl12w73te003015nkly3pim39',
-    center: [-91.180690, 30.412838],
-    zoom: 15
-})
+    container: 'map', // container id
+    style: 'mapbox://styles/seanchappell17/cl12w73te003015nkly3pim39', // stylesheet location
+    center: [-91.180690, 30.412838], // starting position
+    zoom: 15 // starting zoom
+});
+
+// Navigation Controller
+map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+
+// setting the bounds of the map
+const bounds = [
+    [-91.242092, 30.340286],
+    [-91.092860, 30.456432]
+];
+map.setMaxBounds(bounds);
+
+
+// Get current location of user
+map.addControl(new mapboxgl.GeolocateControl({ 
+    positionOption:{ 
+        enableHighAccuracy: true 
+    }, trackUserLocation: true 
+}), 'bottom-right');
 
 
 

@@ -21,4 +21,8 @@ public class User {
     String getUserName(){
         return userName;
     }
+    
+    int getWalkingSpeed(){
+        return 0;
+    }
 }

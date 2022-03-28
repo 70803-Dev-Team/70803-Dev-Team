@@ -1,3 +1,5 @@
+package parkingapp;
+
 public class Lot_Calc {
 
     public int space;
@@ -6,7 +8,7 @@ public class Lot_Calc {
     public int distance;
     public double time_to_walk;
     public double weather_delay;
-
+    
     // public static int Lot_Capacity(String lot)
     // {
     //     int capacity = 0;
@@ -25,7 +27,7 @@ public class Lot_Calc {
     {
         // int[] ratings;
         int rating = 0;
-        rating = DataBase.Aggregate_Ratings(lot);
+        //rating = DataBase.Aggregate_Ratings(lot);
         // int rating_count = ratings.length;
         // for (int i = 0; i < rating_count; i++)
         // {
@@ -45,15 +47,16 @@ public class Lot_Calc {
     public static int Lot_To_Building(ParkingLot lot, String building, int space)
     {
         int distance = 0;
-        distance = Graph.Distance(lot);
-        distance = distance+100*space //5000ft + 400ft for walking through lot
+        //distance = Graph.Distance(lot);
+        distance = distance+100*space; //5000ft + 400ft for walking through lot
         return distance; //in feet?
     }
 
     public static double Walk_Time(int distance)
     {
         double time = 0;
-        int walk_speed = user.speed();
+        User user = new User("user", "password");
+        int walk_speed = user.getWalkingSpeed();
         //convert mph to f/min
         int feet_per_hour = 5280*walk_speed;
         int feet_per_minute = feet_per_hour/60;
@@ -83,7 +86,7 @@ public class Lot_Calc {
     public static double CalculateTime(ParkingLot lot, String building)
     {
         int space = Avg_Space(lot);
-        int capacity = Database.Lot_Capacity(lot);
+        int capacity = 0;//Database.Lot_Capacity(lot);
         double time_to_find_spot = Find_Spot_Time(capacity, space);
         int distance = Lot_To_Building(lot, building, space); //in feet
         double time_to_walk = Walk_Time(distance);
@@ -94,9 +97,9 @@ public class Lot_Calc {
     public static double CalculateScore(ParkingLot lot, String building, double time)
     {
         double score = 0;
-        String day_type = Calander.Day_Type();
+        String day_type = Calandar.Day_Type();
         double weather_delay = Weather_Delay();
-        double capacity = Database.Lot_Capacity(lot);
+        double capacity = 0;//Database.Lot_Capacity(lot);
         if(day_type == "normal")
         {
             score = capacity*0.1 + time*0.8 + weather_delay*0.1;

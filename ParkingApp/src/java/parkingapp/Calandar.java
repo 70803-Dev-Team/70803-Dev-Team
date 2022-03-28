@@ -1,6 +1,8 @@
+package parkingapp;
+
 import javax.lang.model.util.ElementScanner6;
 
-public class Calander {
+public class Calandar {
 
     public static boolean Contains(int key, int[] arr)
     {

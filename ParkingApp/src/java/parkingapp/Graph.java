@@ -1,3 +1,5 @@
+package parkingapp;
+
 public class Graph {
 
     public static int MinDistance(String building, String lot){

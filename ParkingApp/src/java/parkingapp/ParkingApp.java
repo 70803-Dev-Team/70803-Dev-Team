@@ -74,11 +74,7 @@ public class ParkingApp extends HttpServlet {
                 "          </div>\n" +
                 "            <div id=\"directionsOverlay\">\n" +
                 "                <h1>Directions</h1>\n" +
-                "                <form action=\"ParkingApp\" method=\"get\">\n" +
-                "                    <p class=\"form_group\">\n" +
-                "                        <input type=\"input\" class=\"form_field\" placeholder=\"Starting Location\" name=\"userLocation\">\n" +
-                "                        <label for=\"name\" class=\"form_label\">Starting Location</label>\n" +
-                "                    </p>\n" +
+                "                <form action=\"LotSugestions\" method=\"get\">\n" +
                 "                    <p class=\"form_group\">\n" +
                 "                        <input type=\"input\" class=\"form_field\" placeholder=\"Building you want to go to\" name=\"buildingName\">\n" +
                 "                        <label for=\"name\" class=\"form_label\">Building you want to go to</label>\n" +

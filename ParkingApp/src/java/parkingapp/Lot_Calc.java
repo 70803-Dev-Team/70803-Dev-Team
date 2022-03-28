@@ -47,7 +47,7 @@ public class Lot_Calc {
     public static int Lot_To_Building(ParkingLot lot, String building)
     {
         int distance = 0;
-        distance = MinGraph.Distance(lot);
+        distance = Graph.MinDistance(lot.getName(), building);
         //distance = distance+100*space; //5000ft + 400ft for walking through lot
         return distance; //in feet?
     }

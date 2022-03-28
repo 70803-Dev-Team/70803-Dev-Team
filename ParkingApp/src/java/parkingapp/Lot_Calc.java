@@ -44,11 +44,11 @@ public class Lot_Calc {
         return time;
     }
 
-    public static int Lot_To_Building(ParkingLot lot, String building, int space)
+    public static int Lot_To_Building(ParkingLot lot, String building)
     {
         int distance = 0;
-        //distance = Graph.Distance(lot);
-        distance = distance+100*space; //5000ft + 400ft for walking through lot
+        distance = MinGraph.Distance(lot);
+        //distance = distance+100*space; //5000ft + 400ft for walking through lot
         return distance; //in feet?
     }
 
@@ -88,7 +88,7 @@ public class Lot_Calc {
         int space = Avg_Space(lot);
         int capacity = 0;//Database.Lot_Capacity(lot);
         double time_to_find_spot = Find_Spot_Time(capacity, space);
-        int distance = Lot_To_Building(lot, building, space); //in feet
+        int distance = Lot_To_Building(lot, building); //in feet
         double time_to_walk = Walk_Time(distance);
         double time = time_to_find_spot + time_to_walk;
         return time;

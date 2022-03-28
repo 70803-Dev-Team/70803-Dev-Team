@@ -1,6 +1,6 @@
 // @author Max Reulet
 
-package parkingapp;
+package parkingappcalculations;
 
 import java.util.Scanner;
 

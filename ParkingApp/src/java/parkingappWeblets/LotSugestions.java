@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package parkingapp;
+package parkingappWeblets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -80,7 +80,9 @@ public class LotSugestions extends HttpServlet {
             "            <h1>Results</h1>\n" +
             "                <div class=\"parkingLotList\">\n");
                     for (int i = 1; i <=4; i++){
-                        out.println("<li><a href=\"RateNamedLot?LotName=ParkingLotResult" + i + "\">Parking Lot Result" + i + "</a></li>\n");
+                        out.println("<h2>Parking Lot Result" + i + "</h2>\n");
+                        out.println("5(out of 5) full");
+                        out.println("<li><a href=\"RateNamedLot?LotName=ParkingLotResult" + i + "\">Rate Lot</a></li>");
 
                     }
             out.println("</div>\n" +

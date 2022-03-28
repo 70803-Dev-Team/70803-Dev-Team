@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package parkingapp;
+package parkingappWeblets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +12,7 @@ import jakarta.servlet.http.*;
 import java.io.InputStream;
 import jakarta.servlet.annotation.MultipartConfig;
 import java.io.FileOutputStream;
+import parkingappcalculations.*;
 
 // @author Sam Hildebrand
 @WebServlet(name = "buildingsUploadWeblet", urlPatterns = {"/buildingsUploadWeblet"})

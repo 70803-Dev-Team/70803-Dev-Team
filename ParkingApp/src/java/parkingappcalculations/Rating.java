@@ -1,5 +1,5 @@
 
-package parkingapp;
+package parkingappcalculations;
 import java.util.Calendar;
 
 public class Rating {

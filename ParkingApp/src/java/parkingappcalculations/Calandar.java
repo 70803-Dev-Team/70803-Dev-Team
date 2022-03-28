@@ -1,4 +1,4 @@
-package parkingapp;
+package parkingappcalculations;
 
 import javax.lang.model.util.ElementScanner6;
 

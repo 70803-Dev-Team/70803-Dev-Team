@@ -1,4 +1,4 @@
-package parkingapp;
+package parkingappWeblets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,10 +8,11 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import parkingappcalculations.*;
 
 // @author Sam Hildebrand
-@WebServlet(name = "RateLot", urlPatterns = {"/RateLot"})
-public class RateLot extends HttpServlet {
+@WebServlet(name = "RateLot", urlPatterns = {"/RateNamedLot"})
+public class RateNamedLot extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -79,10 +80,6 @@ public class RateLot extends HttpServlet {
                 "        <div id=\"directionsOverlay\">\n" +
                 "            <h1>Rating</h1>\n" +
                 "            <form action=\"ParkingApp\" method=\"get\">\n" +
-                "                <p class=\"form_group\">\n" +
-                "                    <input type=\"input\" class=\"form_field\" placeholder=\"Name of parking lot\" name=\"parkingLotName\">\n" +
-                "                    <label for=\"name\" class=\"form_label\">Name of parking lot</label>\n" +
-                "                </p>\n" +
                 "                <p class=\"form_group\">\n" +
                 "                    <input type=\"input\" class=\"form_field\" placeholder=\"Rate 1-5 (1 being empty)\" name=\"parkingLotRating\">\n" +
                 "                    <label for=\"name\" class=\"form_label\">Rate 1-5 (1 being empty)</label>\n" +

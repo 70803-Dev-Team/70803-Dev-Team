@@ -1,4 +1,4 @@
-package parkingapp;
+package parkingappcalculations;
 
 //Note: for future implementation, make a real weather API, we are down a team member so this was taken off the lsit
 public class Weather {  

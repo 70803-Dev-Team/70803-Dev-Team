@@ -1,4 +1,4 @@
-package parkingapp;
+package parkingappWeblets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,6 +8,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import parkingappcalculations.*;
 
 // @author Sam Hildebrand
 @WebServlet(name = "AccountRegistration", urlPatterns = {"/AccountRegistration"})

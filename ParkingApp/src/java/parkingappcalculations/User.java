@@ -1,4 +1,4 @@
-package parkingapp;
+package parkingappcalculations;
 
 // @author Sam Hildebrand
 public class User {
@@ -10,19 +10,19 @@ public class User {
         userName = name;
         password = passwd;
     }
-    boolean isValidUser(){
+    public boolean isValidUser(){
        return userName != null;
     }
 
-    boolean compareTo(User comparingUser) {
+    public boolean compareTo(User comparingUser) {
         return comparingUser.password.equals(password) && comparingUser.userName.equals(userName);
     }
     
-    String getUserName(){
+    public String getUserName(){
         return userName;
     }
     
-    int getWalkingSpeed(){
+   public int getWalkingSpeed(){
         return 0;
     }
 }

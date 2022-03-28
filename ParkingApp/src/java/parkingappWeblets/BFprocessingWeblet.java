@@ -1,49 +1,31 @@
-package parkingapp;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+package parkingappWeblets;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebInitParam;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import jakarta.servlet.http.Part;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 // @author Sam Hildebrand
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+@WebServlet(name = "BFprocessingWeblet", urlPatterns = {"/BFprocessingWeblet"})
+@MultipartConfig
+public class BFprocessingWeblet extends HttpServlet {
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            String userName = request.getParameter("userName");
-            String password = request.getParameter("password");
-            User loginUser = new User(userName, password);
-            DataBase db = DataBase.getInstance();
-            User databaseUser = db.getUser(userName);
-            if (loginUser.compareTo(databaseUser)){
-                Cookie nameCookie=new Cookie("UserName", userName);
-                Cookie passwordCookie=new Cookie("Password", password);
-                response.addCookie(nameCookie);
-                response.addCookie(passwordCookie);
-               response.sendRedirect("ParkingApp");
-            } else {
-                response.sendRedirect("index.html");
-            }
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -72,7 +54,24 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        response.setContentType("text/plain;charset=UTF-8");
+
+        ServletOutputStream os = response.getOutputStream();
+
+        ServletConfig sc = getServletConfig();
+        String path = sc.getInitParameter("uploadpath");
+
+        Part filePart = request.getPart("myfile");
+
+        String fileName = filePart.getSubmittedFileName();
+
+        InputStream is = filePart.getInputStream();
+
+        Files.copy(is, Paths.get(path + fileName),
+                StandardCopyOption.REPLACE_EXISTING);
+
+        os.print("File successfully uploaded");
     }
 
     /**

@@ -1,4 +1,4 @@
-package parkingapp;
+package parkingappcalculations;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;  

@@ -9,13 +9,13 @@
 body {
     margin: 0;
 }
+
 #map {
     position: absolute;
-    width: 400px;
-    height: 300px;
     height: 100vh;
     width: 100vw;
 }
+
 #directionsOverlay{
     position: absolute;
     z-index: 1;
@@ -27,36 +27,46 @@ body {
     width: 400px;
     top: 65px;
 }
+
 form{
     display: grid;
     grid-template-columns: 0px 335px 50px;
     grid-row-gap: 10px;
 }
+
 form label{
     display: block;
     grid-column: 2 / 3;
 }
+
 form p{
     margin: 0;
     grid-column: 2 / 3;
     width: 350px;
     left: 50px;
 }
+
 .field{
     text-align: center;
     padding-top: 30px;
 }
+
+input[type=text]{
+    color: #461d7c;
+}
+
 input[type="submit"]{
     background: transparent;
     border: 1px solid white;
     color: black;
-    font-size: 18px;
+    font-size: 24px;
     cursor: pointer;
     text-align: center;
     border-radius: 10px;
     width: 275px;
     height: 35px;
 }
+
 input[type="submit"]:hover{
     background: linear-gradient(to left top, #fdd023 0%, #461d7c 100%),
                 linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
@@ -68,24 +78,29 @@ h1{
     text-align: center;
     padding-bottom: 20px;
 }
+
 .rateLot {
     text-align: center;
     padding-top: 30px;
 }
+
 a{
     text-decoration: none;
     color: #461d7c;
     font-weight: 700;
 }
+
 a:hover{
     text-decoration: underline;
 }
+
 .form_group{
     position: relative;
     padding: 15px 0 0;
     margin-top: 10px;
     width: 75%;
 }
+
 .form_field{
     width: 100%;
     border: 0;
@@ -97,9 +112,11 @@ a:hover{
     background: transparent;
     transition: border-color 0.2s;
 }
+
 .form_field::placeholder{
     color: transparent;
 }
+
 .form_label{
     position: absolute;
     top: 0;
@@ -108,11 +125,13 @@ a:hover{
     font-size: 1rem;
     color: #838282;
 }
+
 .form_field:placeholder-shown ~ .form_label{
     font-size: 1.3rem;
     cursor: text;
     top: 20px
 }
+
 .form_field:focus{
     padding-bottom: 6px;
     font-weight: 700;
@@ -120,6 +139,7 @@ a:hover{
     border-image: linear-gradient(to right, #461d7c, #fdd023);
     border-image-slice: 1;
 }
+
 .form_field:focus ~ .form_label{
     position: absolute;
     top: 0;
@@ -130,13 +150,7 @@ a:hover{
     font-weight: 700;
 }
 
-
-
-
-
-
 /*****Side Bar Menu*****/
-
 header {
   display: flex;
   position: fixed;
@@ -159,7 +173,7 @@ header {
     height: 100vh;
     width: 100%;
     pointer-events: none;
-    z-index: 2;
+    z-index: 5;
 }
 
 #nav-container .bg{
@@ -245,12 +259,14 @@ header {
     font-size: 24px;
     letter-spacing: 2px; 
 }
+
 #nav-content ul {
     height: 100%;
     display: flex;
     flex-direction: column;
     list-style-type: none;
 }
+
 #nav-content li{
     padding-bottom: 15px;
 }
@@ -267,6 +283,8 @@ header {
 .small {
     display: flex;
     align-self: center;
+    font-size: 14px;
+    text-align: center;
 }
   
 .small a {
@@ -282,3 +300,7 @@ header {
     transform: none;
 }
 
+#directionsOverlay .parkingLotList .li{
+    list-style-type: none;
+    font-size: 36px;
+}

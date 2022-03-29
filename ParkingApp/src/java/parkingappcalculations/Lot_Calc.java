@@ -1,4 +1,4 @@
-package parkingappcalculations;
+package parkingapp;
 
 public class Lot_Calc {
 
@@ -44,11 +44,11 @@ public class Lot_Calc {
         return time;
     }
 
-    public static int Lot_To_Building(ParkingLot lot, String building)
+    public static int Lot_To_Building(ParkingLot lot, String building, int space)
     {
         int distance = 0;
-        distance = Graph.MinDistance(lot.getName(), building);
-        //distance = distance+100*space; //5000ft + 400ft for walking through lot
+        //distance = Graph.Distance(lot);
+        distance = distance+100*space; //5000ft + 400ft for walking through lot
         return distance; //in feet?
     }
 
@@ -70,11 +70,11 @@ public class Lot_Calc {
         int weather_delay = 0;
         if(weather == "rainy")
         {
-            weather_delay = 2;
+            weather_delay = 10;
         }
         else if (weather == "snow")
         {
-            weather_delay = 1;
+            weather_delay = 5;
         }
         else
         {
@@ -88,7 +88,7 @@ public class Lot_Calc {
         int space = Avg_Space(lot);
         int capacity = 0;//Database.Lot_Capacity(lot);
         double time_to_find_spot = Find_Spot_Time(capacity, space);
-        int distance = Lot_To_Building(lot, building); //in feet
+        int distance = Lot_To_Building(lot, building, space); //in feet
         double time_to_walk = Walk_Time(distance);
         double time = time_to_find_spot + time_to_walk;
         return time;
@@ -99,18 +99,20 @@ public class Lot_Calc {
         double score = 0;
         String day_type = Calandar.Day_Type();
         double weather_delay = Weather_Delay();
+        int space = Avg_Space(lot);
         double capacity = 0;//Database.Lot_Capacity(lot);
+        double fullness = space/capacity;
         if(day_type == "normal")
         {
-            score = capacity*0.1 + time*0.8 + weather_delay*0.1;
+            score = 100 - fullness*20 - time*4 - weather_delay;
         }
         else if (day_type == "weekend")
         {
-            score = capacity*0.1 + time*0.6 + weather_delay*0.3;
+            score = 100 - fullness*10 - time*5 - weather_delay;
         }
         else if (day_type == "game_day")
         {
-            score = capacity*0.5 + time*0.4 + weather_delay*0.1;
+            score = 100 - fullness*30 - time*3 - weather_delay;
         }
         else
         {

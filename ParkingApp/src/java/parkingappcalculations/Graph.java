@@ -1,10 +1,8 @@
-package parkingappcalculations;
-
 public class Graph {
 
     public static int MinDistance(String building, String lot){
 
-        String[][] lots = {{"Touchdown Village 1","PFT","619"},
+        String[][] lot_to_bld = {{"Touchdown Village 1","PFT","619"},
         {"Touchdown Village 1","Lockett Hall","3696"},
         {"Touchdown Village 1","Coates Hall","422"},
         {"Touchdown Village 1","Tiger Stadium","2728"},
@@ -53,15 +51,81 @@ public class Graph {
         {"Touchdown Village 2","Himes Hall","5020"},
         {"Touchdown Village 2","Tureaud","2481"}};
 
+        String[][] bld_to_bld = {{"PFT","Lockett Hall","2145"},
+        {"PFT","Coates Hall","1981"},
+        {"PFT","Tiger Stadium","1795"},
+        {"PFT","Student Union","1866"},
+        {"PFT","LSU Library","2356"},
+        {"PFT","Himes Hall","2465"},
+        {"PFT","Tureaud","400"},
+        {"Lockett Hall","PFT","2145"},
+        {"Lockett Hall","Coates Hall","612"},
+        {"Lockett Hall","Tiger Stadium","396"},
+        {"Lockett Hall","Student Union","1361"},
+        {"Lockett Hall","LSU Library","678"},
+        {"Lockett Hall","Himes Hall","802"},
+        {"Lockett Hall","Tureaud","1867"},
+        {"Coates Hall","PFT","1981"},
+        {"Coates Hall","Lockett Hall","612"},
+        {"Coates Hall","Tiger Stadium","1173"},
+        {"Coates Hall","Student Union","710"},
+        {"Coates Hall","LSU Library","501"},
+        {"Coates Hall","Himes Hall","363"},
+        {"Coates Hall","Tureaud","1405"},
+        {"Tiger Stadium","PFT","1795ft"},
+        {"Tiger Stadium","Lockett Hall","396"},
+        {"Tiger Stadium","Coates Hall","1173"},
+        {"Tiger Stadium","Student Union","2126"},
+        {"Tiger Stadium","LSU Library","1371"},
+        {"Tiger Stadium","Himes Hall","1368"},
+        {"Tiger Stadium","Tureaud","1848"},
+        {"Student Union","PFT","1866"},
+        {"Student Union","Lockett Hall","1361"},
+        {"Student Union","Tiger Stadium","2126"},
+        {"Student Union","LSU Library","1099"},
+        {"Student Union","Himes Hall","873"},
+        {"Student Union","Tureaud","1276"},
+        {"LSU Library","PFT","2356"},
+        {"LSU Library","Lockett Hall","678"},
+        {"LSU Library","Coates Hall","501"},
+        {"LSU Library","Tiger Stadium","1371"},
+        {"LSU Library","Student Union","1099"},
+        {"LSU Library","Himes Hall","181"},
+        {"LSU Library","Tureaud","1814"},
+        {"Himes Hall","PFT","2465"},
+        {"Himes Hall","Lockett Hall","802"},
+        {"Himes Hall","Coates Hall","363"},
+        {"Himes Hall","Tiger Stadium","1368"},
+        {"Himes Hall","Student Union","873"},
+        {"Himes Hall","LSU Library","181"},
+        {"Himes Hall","Tureaud","1599"},
+        {"Tureaud","PFT","400"},
+        {"Tureaud","Lockett Hall","1867"},
+        {"Tureaud","Coates Hall","1405"},
+        {"Tureaud","Tiger Stadium","1848"},
+        {"Tureaud","Student Union","1276"},
+        {"Tureaud","LSU Library","1814"},
+        {"Tureaud","Himes Hall","1599"}};
+
+        // int[][] graph = new int[14][14];
         int i = 0;
+        // int j = 0;
+        // for (i=0; i<bld_to_bld.length; i++)
+        // {
+        //     for (j=0; j<; j++)
+        //     {
+                
+        //     }
+        // }
+        
         int distance = 0; 
-        for (i = 0; i < lots.length; i++) {
+        for (i = 0; i < lot_to_bld.length; i++) {
             // accessing each element of array
-            if (lots[i][1] == building)
+            if (lot_to_bld[i][0] == lot)
             {
-                if (lots[i][0] == lot)
+                if (lot_to_bld[i][1] == building)
                 {
-                    distance = Integer.parseInt(lots[i][2]); 
+                    distance = Integer.parseInt(lot_to_bld[i][2]); 
                 }
             }
         }  

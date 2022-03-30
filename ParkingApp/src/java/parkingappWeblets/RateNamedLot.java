@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import parkingappcalculations.*;
 
 // @author Sam Hildebrand
-@WebServlet(name = "RateLot", urlPatterns = {"/RateNamedLot"})
+@WebServlet(name = "RateNamedLot", urlPatterns = {"/RateNamedLot"})
 public class RateNamedLot extends HttpServlet {
 
     /**
@@ -33,6 +33,7 @@ public class RateNamedLot extends HttpServlet {
             User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
             User dbUser = db.getUser(cookies[0].getValue());
             if (dbUser.compareTo(currentUser)){
+                String lotName = request.getParameter("LotName");
                 out.println("<!DOCTYPE html><html><head>");            
                 out.println("</head><body>");
                 out.println("<!DOCTYPE html>\n" +
@@ -79,15 +80,19 @@ public class RateNamedLot extends HttpServlet {
                 "        <!-----Directions Box----->\n" +
                 "        <div id=\"directionsOverlay\">\n" +
                 "            <h1>Rating</h1>\n" +
-                "            <form action=\"ParkingApp\" method=\"get\">\n" +
+                "            <form action=\"SubmitRating\" method=\"get\">\n" +
                 "                <p class=\"form_group\">\n" +
-                "                    <input type=\"input\" class=\"form_field\" placeholder=\"Rate 1-5 (1 being empty)\" name=\"parkingLotRating\">\n" +
+                "                    <input type=\"input\" class=\"form_field\" placeholder=\"Name of parking lot\" value=\""+ lotName +"\" name=\"lotName\">\n" +
+                "                    <label for=\"name\" class=\"form_label\">Name of parking lot</label>\n" +
+                "                </p>\n" +
+                "                <p class=\"form_group\">\n" +
+                "                    <input type=\"input\" class=\"form_field\" placeholder=\"Rate 1-5 (1 being empty)\" name=\"rating\">\n" +
                 "                    <label for=\"name\" class=\"form_label\">Rate 1-5 (1 being empty)</label>\n" +
                 "                </p>\n" +
-                "            </form>\n" +
                 "            <p class=\"field\">\n" +
                 "                <input type=\"submit\" value=\"Submit\">\n" +
                 "            </p>\n" +
+                "            </form>\n" +
                 "            <p class=\"rateLot\">\n" +
                 "                <a href=\"ParkingApp.html\">Find a parking spot!</a>\n" +
                 "            </p>\n" +
@@ -96,10 +101,6 @@ public class RateNamedLot extends HttpServlet {
                 "    </body>\n" +
                 "</html>\n" +
                 "");
-                String rating = request.getParameter("parkingLotRating");
-                String lotName = request.getParameter("lotName");
-                db.storeRating(lotName, cookies[0].getValue(), rating);
-                out.println("</body></html>");
             } else {
                 response.sendRedirect("index.html");
             }

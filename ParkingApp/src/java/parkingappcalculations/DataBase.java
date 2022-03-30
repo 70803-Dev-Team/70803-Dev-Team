@@ -1,6 +1,7 @@
 package parkingappcalculations;
 
 import java.sql.*;
+import java.util.Calendar;
 
 // @author Sam Hildebrand
 public class DataBase { 
@@ -81,16 +82,19 @@ public class DataBase {
         }
     }
     
-    public int getRating(String parkingLot){
-        int ratingInt = 0;
+    public String getRating(String parkingLot){
+        Calendar calendar = Calendar.getInstance();
+        String rating = "Rating unavailable";
         try {
-            ResultSet rs = statement.executeQuery("SELECT * FROM users WHERE ParkingLot=\"" + parkingLot + "\";");
-            rs.next();
-            String rating = rs.getString("Rating");
-            ratingInt = Integer.parseInt(rating);
+            ResultSet rs = statement.executeQuery("SELECT * FROM ratings WHERE ParkingLot=\"" + parkingLot + "\";");
+            while (rs.next()){
+                if (rs.getString("Month").equals(Integer.toString(calendar.get(Calendar.MONTH)+1))){
+                    rating = rs.getString("Rating");
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return ratingInt;
+        return rating;
     }
 }

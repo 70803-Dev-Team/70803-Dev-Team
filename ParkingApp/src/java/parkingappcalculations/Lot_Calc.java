@@ -1,4 +1,4 @@
-package parkingapp;
+package parkingappcalculations;
 
 public class Lot_Calc {
 

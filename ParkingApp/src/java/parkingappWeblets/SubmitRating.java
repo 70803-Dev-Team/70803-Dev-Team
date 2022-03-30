@@ -8,32 +8,53 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
-import java.io.InputStream;
-import jakarta.servlet.annotation.MultipartConfig;
-import java.io.FileOutputStream;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import parkingappcalculations.*;
 
-// @author Sam Hildebrand
-@WebServlet(name = "buildingsUploadWeblet", urlPatterns = {"/buildingsUploadWeblet"})
-@MultipartConfig
-public class buildingsUploadWeblet extends HttpServlet {
-    
+/**
+ *
+ * @author sam
+ */
+@WebServlet(name = "SubmitRating", urlPatterns = {"/SubmitRating"})
+public class SubmitRating extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            out.println("<title>Rate Lots</title>"); 
             Cookie cookies[] = request.getCookies();
             DataBase db = DataBase.getInstance();
             User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
-            User dbUser = db.getUser("lucas");
+            User dbUser = db.getUser(cookies[0].getValue());
             if (dbUser.compareTo(currentUser)){
-                out.println("<form id=\"upload\" method=\"POST\" action=\"BFprocessingWeblet\" enctype=\"multipart/form-data\">\n" +
-                    "<input type=\"file\" id=\"file\" name=\"file\" />\n" +
-                    "<br/>\n" +
-                    "<input type=\"submit\" id=\"uploadFile\" value=\"Upload\" />\n" +
-                    "</form>");
+                String lotName = request.getParameter("lotName");
+                String rating = request.getParameter("rating");
+                out.println(lotName);
+                out.println("<br>");
+                out.println(rating);
+                int ratingInt = 0;
+                try {
+                    ratingInt = Integer.parseInt(rating);
+                }
+                catch (NumberFormatException e){};
+                if (ratingInt >= 1 && ratingInt <=5){
+                    db.storeRating(lotName, cookies[0].getValue(), rating);
+                    response.sendRedirect("ParkingApp");
+                } else {
+                    response.sendRedirect("RateLot?ErrorMessage=Invalid Rating&LotName=" + lotName);
+                }
             } else {
                 response.sendRedirect("index.html");
             }

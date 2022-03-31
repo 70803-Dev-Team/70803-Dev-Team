@@ -106,7 +106,7 @@ public class Lot_Calc {
         String day_type = Calandar.Day_Type();
         double weather_delay = Weather_Delay();
         int space = Avg_Space(lot);
-        double capacity = 100;//Database.Lot_Capacity(lot);
+        double capacity = 1;//Database.Lot_Capacity(lot);
         double fullness = space/capacity;
         if(null == day_type)
         {
@@ -114,13 +114,13 @@ public class Lot_Calc {
         }
         else switch (day_type) {
             case "normal":
-                score = 100 - fullness*20 - time*4 - weather_delay;
+                score = 100 - fullness*10 - time*4 - weather_delay;
                 break;
             case "weekend":
-                score = 100 - fullness*10 - time*5 - weather_delay;
+                score = 100 - fullness*5 - time*5 - weather_delay;
                 break;
             case "game_day":
-                score = 100 - fullness*30 - time*3 - weather_delay;
+                score = 100 - fullness*10 - time*3 - weather_delay;
                 break;
             default:
                 score = 0;

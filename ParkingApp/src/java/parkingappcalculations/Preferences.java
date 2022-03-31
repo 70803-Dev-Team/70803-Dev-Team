@@ -2,51 +2,65 @@
 
 package parkingappcalculations;
 
-import java.util.Scanner;
 
 public class Preferences {
     
-    private String parkPass;
-    private int speed;
-    private String[] schedule;
-    Scanner in = new Scanner(System.in);
+    private final User userName;
+    private final String parkPass;
+    private final int speed;
+    private final String[] schedule;
     
-    public Preferences(String parkingPass, int speedMPH, String[] classSchedule) {
-        this.parkPass = parkingPass;
-        this.speed = speedMPH;
-        this.schedule = classSchedule;
+   private Preferences(UserBuilder builder) {
+       this.userName = builder.userName;
+       this.parkPass = builder.parkPass;
+       this.speed = builder.speed;
+       this.schedule = builder.schedule;
+   }
+   
+   public User getUserName() {
+       return userName;
+   }
+   
+   public String addPass () {
+        return parkPass;
     }
     
-    public void addPass() {
-        System.out.println("Please enter type of parking pass you own: ");
-        parkPass = in.nextLine();
-        if(parkPass.equals("A") || parkPass.equals("B") || parkPass.equals("C") || parkPass.equals("D")) {
-            System.out.println("You have parking pass " + parkPass);
-        }
-        else {
-            System.out.println("Please enter a valid parking pass.");
-            addPass();
-        }
+    public int addWalkSpeed() {
+        return speed;
     }
     
-    public void userSpeed () {
-        System.out.println("Please enter the speed you walk in miles per hour: ");
-        speed = in.nextInt();
-        System.out.println("Updated walking speed in miles per hour is " + speed);
+    public String[] classSchedule() {
+        return schedule;
     }
     
-    public void userSchedule () {
-        System.out.println("Please enter your class schedule in the following format: ex CSC 3380 10:30-12 T-Th");
-        System.out.println("How many classes are you currently in?");
-        int numClass = Integer.parseInt(in.nextLine());
-        schedule = new String[numClass];
-        for(int i = 0; i < schedule.length; i++) {
-            System.out.println("Enter class schedule:  ");
-            schedule[i] = in.nextLine();
+    public static class UserBuilder {
+        private final User userName;
+        private String parkPass;
+        private int speed;
+        private String[] schedule;
+        
+        public UserBuilder(User userName) {
+            this.userName = userName;
         }
-        for (String classes:schedule) {
-            System.out.println("Updated Schedule");
-            System.out.println(classes);
+        
+        public UserBuilder parkPass(String parkPass) {
+            this.parkPass = parkPass;
+            return this;
         }
-    }
+        
+        public UserBuilder speed(int speed) {
+            this.speed = speed;
+            return this;
+        }
+        
+        public UserBuilder schedule(String[] schedule) {
+            this.schedule = schedule;
+            return this;
+        }
+        
+        public Preferences build() {
+            Preferences currentUser = new Preferences(this);
+            return currentUser;
+        }
+    }    
 }

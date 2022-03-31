@@ -108,13 +108,13 @@ public class Lot_Calc {
         }
         else switch (day_type) {
             case "normal":
-                score = 100 - time*4 - weather_delay;
+                score = 100 - fullness*20 - time*4 - weather_delay;
                 break;
             case "weekend":
-                score = 100 - time*5 - weather_delay;
+                score = 100 - fullness*10 - time*5 - weather_delay;
                 break;
             case "game_day":
-                score = 100 - time*3 - weather_delay;
+                score = 100 - fullness*30 - time*3 - weather_delay;
                 break;
             default:
                 score = 0;

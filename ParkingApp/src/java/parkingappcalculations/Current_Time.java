@@ -21,7 +21,12 @@ public class Current_Time
           month = "03";
       }
       //String month = parse temp
-      int month_num = Integer.parseInt(month);
+      int month_num = 0;
+      try {
+        Integer.parseInt(month);   
+      } catch (Exception e){
+          
+      }
       return month_num;
   }
 

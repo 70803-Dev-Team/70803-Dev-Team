@@ -78,8 +78,14 @@ public class Calandar {
             month = "03";
         }
         //String month = parse temp
-        int month_num = Integer.parseInt(month);
-        int day_num = Integer.parseInt(day);
+        int month_num = 0;
+        int day_num = 0;
+        try{
+            month_num = Integer.parseInt(month);
+            day_num = Integer.parseInt(day);
+        } catch (Exception e){
+
+        }
         String day_type = "";
         int[] month_calander = Get_Calander(month_num);
         if (month_calander[day_num] == 0)

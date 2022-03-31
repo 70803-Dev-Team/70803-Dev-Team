@@ -93,10 +93,11 @@ public class LotSugestions extends HttpServlet {
                     "        <div id=\"directionsOverlay\">\n" +
                     "            <h1>Results</h1>\n" +
                     "                <div class=\"parkingLotList\">\n");
-                    //SuggestionCompilation sg = new SuggestionCompilation(buildingName);
-                    //ArrayList<Suggestion> suggestions = sg.getSuggestions();
-                    for (int i = 1; i < 6; i++) {//Suggestion suggestion : suggestions){
-                        String suggestionName = "Result" + i;//suggestion.getLot().getName();
+                    SuggestionCompilation sg = new SuggestionCompilation(buildingName);
+                    ArrayList<Suggestion> suggestions = sg.getSuggestions();
+                    for (int i = 0; i < 5; i++){
+                        Suggestion suggestion = suggestions.get(i);
+                        String suggestionName = suggestion.getLot().getName();
                         out.println("<h2>"+ suggestionName +"</h2>\n");
                         int rating = db.getRating(suggestionName);
                         if (rating == -9999){

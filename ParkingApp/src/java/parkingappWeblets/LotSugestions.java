@@ -105,11 +105,14 @@ public class LotSugestions extends HttpServlet {
                             out.println(rating*20+"% full");
                         }
                         out.println(" | ");
-                        int distance = Graph.MinDistance(buildingName, suggestionName);
+                        double distance = Graph.MinDistance(buildingName, suggestionName);
                         if (distance == -9999){
                             out.println("Distance Unavailable"); 
+                        } else if (distance > 5280) {
+                            distance = distance/5280;
+                            out.printf("%.1fmi. away", distance); 
                         } else {
-                            out.println(distance+ "ft away"); 
+                            out.printf("%.0fft away", distance);
                         }
                         out.println("<li><a href=\"RateLot?LotName=" + suggestionName + "\">Rate Lot</a></li>");
                         out.println("<br>");

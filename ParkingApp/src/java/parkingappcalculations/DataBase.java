@@ -82,19 +82,20 @@ public class DataBase {
         }
     }
     
-    public String getRating(String parkingLot){
+    public int getRating(String parkingLot){
         Calendar calendar = Calendar.getInstance();
-        String rating = "Rating unavailable";
+        int ratingInt = -9999;
         try {
             ResultSet rs = statement.executeQuery("SELECT * FROM ratings WHERE ParkingLot=\"" + parkingLot + "\";");
             while (rs.next()){
                 if (rs.getString("Month").equals(Integer.toString(calendar.get(Calendar.MONTH)+1))){
-                    rating = rs.getString("Rating");
+                    String rating = rs.getString("Rating");
+                    ratingInt = Integer.parseInt(rating);
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return rating;
+        return ratingInt;
     }
 }

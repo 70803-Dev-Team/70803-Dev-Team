@@ -95,6 +95,16 @@ public class AccountRegistration extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DataBase db = DataBase.getInstance();
+        try {
+            Cookie cookies[] = request.getCookies(); 
+            User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
+            User dbUser = db.getUser(cookies[0].getValue());
+            if(!dbUser.compareTo(currentUser)){
+               response.sendRedirect("index.html"); 
+            }
+        } catch (Exception e){
+            response.sendRedirect("index.html");
+        }
         try ( PrintWriter out = response.getWriter()) {
             out.println(displayLoginForm(""));
             String userName = request.getParameter("userName");

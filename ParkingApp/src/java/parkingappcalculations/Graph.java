@@ -1,3 +1,5 @@
+package parkingappcalculations;
+
 public class Graph {
 
     public static int MinDistance(String building, String lot){
@@ -118,12 +120,12 @@ public class Graph {
         //     }
         // }
         
-        int distance = 0; 
+        int distance = -9999; 
         for (i = 0; i < lot_to_bld.length; i++) {
             // accessing each element of array
-            if (lot_to_bld[i][0] == lot)
+            if (lot_to_bld[i][0].equals(lot))
             {
-                if (lot_to_bld[i][1] == building)
+                if (lot_to_bld[i][1].equals(building))
                 {
                     distance = Integer.parseInt(lot_to_bld[i][2]); 
                 }

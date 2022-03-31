@@ -34,28 +34,32 @@ public class SubmitRating extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            Cookie cookies[] = request.getCookies();
             DataBase db = DataBase.getInstance();
-            User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
-            User dbUser = db.getUser(cookies[0].getValue());
-            if (dbUser.compareTo(currentUser)){
-                String lotName = request.getParameter("lotName");
-                String rating = request.getParameter("rating");
-                out.println(lotName);
-                out.println("<br>");
-                out.println(rating);
-                int ratingInt = 0;
-                try {
-                    ratingInt = Integer.parseInt(rating);
-                }
-                catch (NumberFormatException e){};
-                if (ratingInt >= 1 && ratingInt <=5){
-                    db.storeRating(lotName, cookies[0].getValue(), rating);
-                    response.sendRedirect("ParkingApp");
+            try {
+                Cookie cookies[] = request.getCookies(); 
+                User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
+                User dbUser = db.getUser(cookies[0].getValue());
+                if(!dbUser.compareTo(currentUser)){
+                   response.sendRedirect("index.html"); 
                 } else {
-                    response.sendRedirect("RateLot?ErrorMessage=Invalid Rating&LotName=" + lotName);
+                    String lotName = request.getParameter("lotName");
+                    String rating = request.getParameter("rating");
+                    out.println(lotName);
+                    out.println("<br>");
+                    out.println(rating);
+                    int ratingInt = 0;
+                    try {
+                        ratingInt = Integer.parseInt(rating);
+                    }
+                    catch (NumberFormatException e){};
+                    if (ratingInt >= 1 && ratingInt <=5){
+                        db.storeRating(lotName, cookies[0].getValue(), rating);
+                        response.sendRedirect("ParkingApp");
+                    } else {
+                        response.sendRedirect("RateLot?ErrorMessage=Invalid Rating&LotName=" + lotName);
+                    }
                 }
-            } else {
+            } catch (Exception e){
                 response.sendRedirect("index.html");
             }
         }

@@ -102,21 +102,23 @@ public class Lot_Calc {
         int space = Avg_Space(lot);
         double capacity = 0;//Database.Lot_Capacity(lot);
         double fullness = space/capacity;
-        if(day_type == "normal")
-        {
-            score = 100 - fullness*20 - time*4 - weather_delay;
-        }
-        else if (day_type == "weekend")
-        {
-            score = 100 - fullness*10 - time*5 - weather_delay;
-        }
-        else if (day_type == "game_day")
-        {
-            score = 100 - fullness*30 - time*3 - weather_delay;
-        }
-        else
+        if(null == day_type)
         {
             score = 0;
+        }
+        else switch (day_type) {
+            case "normal":
+                score = 100 - time*4 - weather_delay;
+                break;
+            case "weekend":
+                score = 100 - time*5 - weather_delay;
+                break;
+            case "game_day":
+                score = 100 - time*3 - weather_delay;
+                break;
+            default:
+                score = 0;
+                break;
         }
         return score;
     }

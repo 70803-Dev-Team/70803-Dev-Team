@@ -23,18 +23,22 @@ public class buildingsUploadWeblet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            out.println("<title>Rate Lots</title>"); 
-            Cookie cookies[] = request.getCookies();
+            out.println("<title>BuildingUpload</title>"); 
             DataBase db = DataBase.getInstance();
-            User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
-            User dbUser = db.getUser("lucas");
-            if (dbUser.compareTo(currentUser)){
+            try {
+               Cookie cookies[] = request.getCookies(); 
+                User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
+                User dbUser = db.getUser(cookies[0].getValue());
+                if(!dbUser.compareTo(currentUser)){
+                   response.sendRedirect("index.html"); 
+                } else {
                 out.println("<form id=\"upload\" method=\"POST\" action=\"BFprocessingWeblet\" enctype=\"multipart/form-data\">\n" +
                     "<input type=\"file\" id=\"file\" name=\"file\" />\n" +
                     "<br/>\n" +
                     "<input type=\"submit\" id=\"uploadFile\" value=\"Upload\" />\n" +
                     "</form>");
-            } else {
+                }
+            } catch (Exception e){
                 response.sendRedirect("index.html");
             }
         }

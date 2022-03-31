@@ -102,7 +102,7 @@ public class LotSugestions extends HttpServlet {
                         if (rating == -9999){
                             out.println("Rating Unavailable");
                         }else{
-                            out.println(rating+" (out of 5) full");
+                            out.println(rating*20+"% full");
                         }
                         out.println(" | ");
                         int distance = Graph.MinDistance(buildingName, suggestionName);

@@ -1,5 +1,8 @@
 package parkingappcalculations;
 
+import java.sql.Array;
+import java.util.ArrayList;
+
 public class Lot_Calc {
 
     public int space;
@@ -25,15 +28,18 @@ public class Lot_Calc {
 
     public static int Avg_Space(ParkingLot lot)
     {
-        // int[] ratings;
-        int rating = 1;
-        //rating = DataBase.Aggregate_Ratings(lot);
-        // int rating_count = ratings.length;
-        // for (int i = 0; i < rating_count; i++)
-        // {
-        //     rating += ratings[i];
-        // }
-        // rating = rating/rating_count;
+        ArrayList<Integer> ratings;
+        int rating = 0;
+        DataBase db = DataBase.getInstance();
+        ratings = db.aggregateRatings(lot.getName());
+        int rating_count = ratings.size();
+        for (int i = 0; i < rating_count; i++)
+        {
+             rating = rating + ratings.get(i);
+        }
+        if (rating > 0 && rating_count > 0){
+            rating = rating/rating_count; 
+        }
         return rating;
     }
 
@@ -86,7 +92,7 @@ public class Lot_Calc {
     public static double CalculateTime(ParkingLot lot, String building)
     {
         int space = Avg_Space(lot);
-        int capacity = 1;//Database.Lot_Capacity(lot);
+        int capacity = 100;//Database.Lot_Capacity(lot);
         double time_to_find_spot = Find_Spot_Time(capacity, space);
         int distance = Lot_To_Building(lot, building, space); //in feet
         double time_to_walk = Walk_Time(distance);
@@ -100,7 +106,7 @@ public class Lot_Calc {
         String day_type = Calandar.Day_Type();
         double weather_delay = Weather_Delay();
         int space = Avg_Space(lot);
-        double capacity = 1;//Database.Lot_Capacity(lot);
+        double capacity = 100;//Database.Lot_Capacity(lot);
         double fullness = space/capacity;
         if(null == day_type)
         {

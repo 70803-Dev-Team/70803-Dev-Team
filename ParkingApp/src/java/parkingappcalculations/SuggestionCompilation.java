@@ -21,7 +21,6 @@ public class SuggestionCompilation {
             parkingLots.add(lot);
         }
         SuggestionList suggestionList = new SuggestionList(parkingLots, buildingName);
-        suggestionList.sortSuggestions();
         suggestions = suggestionList.getUserSuggestions();
         }
     

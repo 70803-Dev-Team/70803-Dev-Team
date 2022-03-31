@@ -1,6 +1,7 @@
 package parkingappcalculations;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 // @author Sam Hildebrand
@@ -97,5 +98,20 @@ public class DataBase {
             e.printStackTrace();
         }
         return ratingInt;
+    }
+    
+    public ArrayList<Integer> aggregateRatings(String parkingLot){
+        ArrayList<Integer> ratings = new ArrayList<Integer>();
+        try {
+            ResultSet rs = statement.executeQuery("SELECT * FROM ratings WHERE ParkingLot=\"" + parkingLot + "\";");
+            while (rs.next()){
+                String rating = rs.getString("Rating");
+                int ratingInt = Integer.parseInt(rating);
+                ratings.add(ratingInt);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ratings;
     }
 }

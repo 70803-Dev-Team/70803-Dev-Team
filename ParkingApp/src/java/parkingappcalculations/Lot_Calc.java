@@ -45,15 +45,15 @@ public class Lot_Calc {
 
     public static double Find_Spot_Time(int capacity, int space)
     {
-        int time = 0;
-        time = space/capacity;
+        int time = 2; //set to 2 minutes until capacity feature implemented
+        //time = space/capacity;
         return time;
     }
 
     public static int Lot_To_Building(ParkingLot lot, String building, int space, String permit)
     {
         int distance = 0;
-        //distance = Graph.Distance(lot, building, permit);
+        distance = Graph.MinDistance(lot, building, permit);
         distance = distance+100*space; //5000ft + 400ft for walking through lot
         return distance; //in feet?
     }
@@ -92,7 +92,7 @@ public class Lot_Calc {
     public static double CalculateTime(ParkingLot lot, String building) //ADD STRING PERMIT TO PARAMETER AND DELETE PERMIT = "COMMUTER"
     {
         int space = Avg_Space(lot);
-        int capacity = 100;//Database.Lot_Capacity(lot);
+        int capacity = 1;//Database.Lot_Capacity(lot);
         double time_to_find_spot = Find_Spot_Time(capacity, space);
         String permit = "commuter";
         int distance = Lot_To_Building(lot, building, space, permit); //in feet

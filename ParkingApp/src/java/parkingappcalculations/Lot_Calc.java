@@ -50,10 +50,10 @@ public class Lot_Calc {
         return time;
     }
 
-    public static int Lot_To_Building(ParkingLot lot, String building, int space)
+    public static int Lot_To_Building(ParkingLot lot, String building, int space, String permit)
     {
         int distance = 0;
-        //distance = Graph.Distance(lot);
+        //distance = Graph.Distance(lot, building, permit);
         distance = distance+100*space; //5000ft + 400ft for walking through lot
         return distance; //in feet?
     }
@@ -89,12 +89,13 @@ public class Lot_Calc {
         return weather_delay;
     }
 
-    public static double CalculateTime(ParkingLot lot, String building)
+    public static double CalculateTime(ParkingLot lot, String building) //ADD STRING PERMIT TO PARAMETER AND DELETE PERMIT = "COMMUTER"
     {
         int space = Avg_Space(lot);
         int capacity = 100;//Database.Lot_Capacity(lot);
         double time_to_find_spot = Find_Spot_Time(capacity, space);
-        int distance = Lot_To_Building(lot, building, space); //in feet
+        String permit = "commuter";
+        int distance = Lot_To_Building(lot, building, space, permit); //in feet
         double time_to_walk = Walk_Time(distance);
         double time = time_to_find_spot + time_to_walk;
         return time;

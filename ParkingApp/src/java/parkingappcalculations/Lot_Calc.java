@@ -33,6 +33,7 @@ public class Lot_Calc {
         DataBase db = DataBase.getInstance();
         ratings = db.aggregateRatings(lot.getName());
         int rating_count = ratings.size();
+        
         for (int i = 0; i < rating_count; i++)
         {
              rating = rating + ratings.get(i);
@@ -40,6 +41,7 @@ public class Lot_Calc {
         if (rating > 0 && rating_count > 0){
             rating = rating/rating_count; 
         }
+        
         return rating;
     }
 
@@ -54,7 +56,7 @@ public class Lot_Calc {
     {
         int distance = 0;
         distance = Graph.MinDistance(lot, building, permit);
-        distance = distance+100*space; //5000ft + 400ft for walking through lot
+        distance = distance+ 100 * space; //5000ft + 400ft for walking through lot
         return distance; //in feet?
     }
 
@@ -63,10 +65,12 @@ public class Lot_Calc {
         double time = 0;
         User user = new User("user", "password");
         int walk_speed = user.getWalkingSpeed();
+        
         //convert mph to f/min
         int feet_per_hour = 5280*walk_speed;
         int feet_per_minute = feet_per_hour/60;
         time = distance/feet_per_minute;
+        
         return time;
     }
 
@@ -74,6 +78,7 @@ public class Lot_Calc {
     {
         String weather = Weather.Get_Weather();
         int weather_delay = 0;
+        
         if(weather == "rainy")
         {
             weather_delay = 10;
@@ -86,6 +91,7 @@ public class Lot_Calc {
         {
             weather_delay = 0;
         }
+        
         return weather_delay;
     }
 
@@ -98,6 +104,7 @@ public class Lot_Calc {
         int distance = Lot_To_Building(lot, building, space, permit); //in feet
         double time_to_walk = Walk_Time(distance);
         double time = time_to_find_spot + time_to_walk;
+        
         return time;
     }
 
@@ -109,6 +116,7 @@ public class Lot_Calc {
         int space = Avg_Space(lot);
         double capacity = 1;//Database.Lot_Capacity(lot);
         double fullness = space/capacity;
+        
         if(null == day_type)
         {
             score = 0;
@@ -126,7 +134,7 @@ public class Lot_Calc {
             default:
                 score = 0;
                 break;
-        }
+        }     
         return score;
     }
 }

@@ -5,6 +5,7 @@ import java.util.*;
 
 public class LotList {
     
+    //General information about the lots -- prints name, capacity, the closest Building, etc.
     private ArrayList<ParkingLot> lots;
     private int amountOfLots;
     
@@ -14,6 +15,7 @@ public class LotList {
         amountOfLots = lots.size();
     }
     
+    //Getter methods
     public ArrayList<ParkingLot> getLotList(){
         return lots; 
     }
@@ -28,6 +30,7 @@ public class LotList {
         Collections.sort(lots);
     }
     
+    //Tester, prints all the information about the lots
      public void printInfo(ArrayList<String> allBuildings){
         for(ParkingLot p : lots){
             String name = p.getName();

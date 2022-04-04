@@ -1,5 +1,4 @@
 /ParkingApp/nbproject/
 /ParkingApp/build/
 /ParkingApp/dist/
-
-
+*.properties

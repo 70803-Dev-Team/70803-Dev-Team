@@ -8,7 +8,7 @@ public class Lot_Calc {
     public int space;
     public int capacity;
     public double time_to_find_spot;
-    public int distance;
+    public double distance;
     public double time_to_walk;
     public double weather_delay;
     
@@ -65,10 +65,10 @@ public class Lot_Calc {
     //the user's designated building to a given lot.
     //We also include extra distance depending on how full the lot is
     //to account for walking from a spot in the back of the lot to the front.
-    public static int Lot_To_Building(ParkingLot lot, String building, int space, String permit)
+    public static double Lot_To_Building(ParkingLot lot, String building, int space, String permit)
     {
-        int distance = 0;
-        distance = Graph.MinDistance(lot, building, permit);
+        double distance = 0;
+        distance = Graph.MinDistance(building, lot, permit);
         distance = distance+ 100 * space; //5000ft + 400ft for walking through lot
         return distance; //in feet?
     }
@@ -125,8 +125,8 @@ public class Lot_Calc {
         int space = Avg_Space(lot);
         int capacity = 1;//Database.Lot_Capacity(lot);
         double time_to_find_spot = Find_Spot_Time(capacity, space);
-        int distance = Lot_To_Building(lot, building, space, permit); //in feet
-        double time_to_walk = Walk_Time(distance);
+        double distance = Lot_To_Building(lot, building, space, permit); //in feet
+        double time_to_walk = Walk_Time((int)distance);
         double time = time_to_find_spot + time_to_walk;
         
         return time;

@@ -13,17 +13,17 @@ public class Graph {
     //that takes into account curvature of the Earth
     public static double latlongconv(double bldlat, double bldlong, double lotlat, double lotlong)
     {
-        double latdist = abs(bldlat - lotlat);
+        double latdist = Math.abs(bldlat - lotlat);
         double latfeet = latdist*364000;
-        double longdist = abs(bldlong - lotlong);
+        double longdist = Math.abs(bldlong - lotlong);
         double longfeet = longdist*288200;
-        double totalfeet = sqrt(latfeet*latfeet + longfeet*longfeet);
+        double totalfeet = Math.sqrt(latfeet*latfeet + longfeet*longfeet);
         return totalfeet;
     }
 
     //Finds the distance between a lot and the building
     //depending on the user's permit
-    public static int MinDistance(String building, String lot, String permit){
+    public static double MinDistance(String building, ParkingLot lot, String permit){
 
         //Stretch feature we weren't able to implement
         String[][] lot_to_bld = {{"Touchdown Village 1","PFT","619"},
@@ -223,12 +223,12 @@ public class Graph {
         double mindistance = 0;
 
         //get latitude and longitude of user's building
-        for (i = 0; i < bld_latlong.length; i++) {
+        for (int i = 0; i < bld_latlong.length; i++) {
             // accessing each element of array
             if (bld_latlong[i][0].equals(building))
             {
-                bldlat = bld_latlong[i][2];
-                bldlong = bld_latlong[i][1];
+                bldlat = Double.parseDouble(bld_latlong[i][2]);
+                bldlong = Double.parseDouble(bld_latlong[i][1]);
             }
         }  
 
@@ -236,11 +236,11 @@ public class Graph {
         //that the lot is a commuter lot
         if(permit == "commuter")
         {
-            for (i = 0; i < comlot_latlong.length; i++) {
-                if (comlot_latlong[i][0] == lot)
+            for (int i = 0; i < comlot_latlong.length; i++) {
+                if (comlot_latlong[i][0] == lot.getName())
                 {
-                    lotlat = comlot_latlong[i][1];
-                    lotlong = comlot_latlong[i][2];
+                    lotlat = Double.parseDouble(comlot_latlong[i][1]);
+                    lotlong = Double.parseDouble(comlot_latlong[i][2]);
                     distance = latlongconv(bldlat, bldlong, lotlat, lotlong);
                 }
             }
@@ -250,11 +250,11 @@ public class Graph {
         //that the lot is a residential lot
         else if (permit == "residential")
         {
-            for (i = 0; i < reslot_latlong.length; i++) {
-                if (reslot_latlong[i][0] == lot)
+            for (int i = 0; i < reslot_latlong.length; i++) {
+                if (reslot_latlong[i][0].equals(lot.getName()))
                 {
-                    lotlat = reslot_latlong[i][1];
-                    lotlong = reslot_latlong[i][2];
+                    lotlat = Double.parseDouble(reslot_latlong[i][1]);
+                    lotlong = Double.parseDouble(reslot_latlong[i][2]);
                     distance = latlongconv(bldlat, bldlong, lotlat, lotlong);
                 }
             }
@@ -264,11 +264,11 @@ public class Graph {
         //that the lot is a law lot
         else if (permit == "law")
         {
-            for (i = 0; i < lawlot_latlong.length; i++) {
-                if (lawlot_latlong[i][0] == lot)
+            for (int i = 0; i < lawlot_latlong.length; i++) {
+                if (lawlot_latlong[i][0].equals(lot.getName()))
                 {
-                    lotlat = lawlot_latlong[i][1];
-                    lotlong = lawlot_latlong[i][2];
+                    lotlat = Double.parseDouble(lawlot_latlong[i][1]);
+                    lotlong = Double.parseDouble(lawlot_latlong[i][2]);
                     distance = latlongconv(bldlat, bldlong, lotlat, lotlong);
                 }
             }
@@ -278,11 +278,11 @@ public class Graph {
         //that the lot is a greek lot
         else if (permit == "greek")
         {
-            for (i = 0; i < greeklot_latlong.length; i++) {
-                if (greeklot_latlong[i][0] == lot)
+            for (int i = 0; i < greeklot_latlong.length; i++) {
+                if (greeklot_latlong[i][0] == lot.getName())
                 {
-                    lotlat = greeklot_latlong[i][1];
-                    lotlong = greeklot_latlong[i][2];
+                    lotlat = Double.parseDouble(greeklot_latlong[i][1]);
+                    lotlong = Double.parseDouble(greeklot_latlong[i][2]);
                     distance = latlongconv(bldlat, bldlong, lotlat, lotlong);
                 }
             }

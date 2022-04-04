@@ -3,8 +3,11 @@ package parkingappcalculations;
 //@author Samuel Hildebrand
 
 import java.util.ArrayList;
+import ParkingLot;
 
-private ParkingLot[] allLots = {new ParkingLot("Touchdown Village West", "Commuter"), 
+        
+public class SuggestionCompilation {
+        private ParkingLot[] allLots = {new ParkingLot("Touchdown Village West", "Commuter"), 
         new ParkingLot("Front 9", "Commuter"),
         new ParkingLot("Touchdown Village East", "Commuter"),
         new ParkingLot("West Parker BLVD", "Commuter"),
@@ -79,3 +82,4 @@ private ParkingLot[] allLots = {new ParkingLot("Touchdown Village West", "Commut
         return suggestions;
     }
 }
+        }

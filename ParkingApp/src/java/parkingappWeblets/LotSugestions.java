@@ -106,7 +106,7 @@ public class LotSugestions extends HttpServlet {
                             out.println(rating*20+"% full");
                         }
                         out.println(" | ");
-                        double distance = Graph.MinDistance(buildingName, suggestionName);
+                        double distance = Graph.MinDistance(buildingName, suggestion.getLot(), "commuter");
                         if (distance == -9999){
                             out.println("Distance Unavailable"); 
                         } else if (distance > 5280) {

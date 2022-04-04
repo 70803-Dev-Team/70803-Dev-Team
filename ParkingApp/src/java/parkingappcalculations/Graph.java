@@ -1,7 +1,16 @@
 package parkingappcalculations;
 
+//Finds the distance between lot and building
+//Originally wanted to make a graph of the lots and buildings
+//to calculate distances, since bird-eye views are not accurate.
+//However, that would require enormous amounts of data collection
+//and being down a team member, that was not possible.
 public class Graph {
 
+    //Converts the differences in latitude and longitute
+    //to distance in feet. Uses pythagorean theorem.
+    //Distances are too short to use a more complex algorithm
+    //that takes into account curvature of the Earth
     public static double latlongconv(double bldlat, double bldlong, double lotlat, double lotlong)
     {
         double latdist = abs(bldlat - lotlat);
@@ -12,9 +21,11 @@ public class Graph {
         return totalfeet;
     }
 
+    //Finds the distance between a lot and the building
+    //depending on the user's permit
     public static int MinDistance(String building, String lot, String permit){
 
-        //Stretch feature
+        //Stretch feature we weren't able to implement
         String[][] lot_to_bld = {{"Touchdown Village 1","PFT","619"},
         {"Touchdown Village 1","Lockett Hall","3696"},
         {"Touchdown Village 1","Coates Hall","422"},
@@ -64,7 +75,7 @@ public class Graph {
         {"Touchdown Village 2","Himes Hall","5020"},
         {"Touchdown Village 2","Tureaud","2481"}};
 
-        //Stretch feature
+        //Stretch feature we weren't able to implement
         String[][] bld_to_bld = {{"PFT","Lockett Hall","2145"},
         {"PFT","Coates Hall","1981"},
         {"PFT","Tiger Stadium","1795"},
@@ -121,6 +132,8 @@ public class Graph {
         {"Tureaud","LSU Library","1814"},
         {"Tureaud","Himes Hall","1599"}};
 
+        //List of buildings and their latitude
+        //and longitude positions
         String[][] bld_latlong = {{"PFT","30.407535","-91.179743"},
         {"College of Buisness","30.407005","-91.178426"},
         {"Union","30.412313","-91.177084"},
@@ -132,6 +145,8 @@ public class Graph {
         {"Law Center","30.414677","-91.174878"},
         {"UREC","30.410795","-91.169064"}};
 
+        //List of commuter lots and their latitude
+        //and longitude positions
         String[][] comlot_latlong = {{"Touchdown Village West","-91.179830","30.405662"},
         {"Front 9","-91.178971","30.405319"},
         {"Touchdown Village East","-91.176962","30.405230"},
@@ -148,6 +163,8 @@ public class Graph {
         {"Astr St West","-91.183500","30.419880"},
         {"Edward Gay","-91.180856","30.421157"}};
 
+        //List of residential lots and their latitude
+        //and longitude positions
         String[][] reslot_latlong = {{"Beech Volleyball Lot","-91.184592","30.416165"},
         {"Alaska St. Lot","-91.184492","30.417190"},
         {"Broussard Lot","-91.182355","30.416831"},
@@ -177,6 +194,8 @@ public class Graph {
         {"Hill Farm Lot","-91.171005","30.412922"},
         {"Greek Row West Lot","-91.170060","30.409564"}};
 
+        //List of law lots and their latitude
+        //and longitude positions
         String[][] lawlot_latlong = {{"South Law Lot","-91.174160","30.413872"},
         {"Law Center East Lot","-91.174144","30.415224"},
         {"Law Center - Street Lot","-91.174756","30.413902"},
@@ -184,6 +203,8 @@ public class Graph {
         {"Dalrymple Dr","-91.174886","30.415675"},
         {"Issac Cline Lot","-91.169969","30.415747"}};
 
+        //List of greek lots and their latitude
+        //and longitude positions
         String[][] greeklot_latlong = {{"Greek Row South Lot","-91.167829","30.410021"},
         {"Greek Row Central","-91.168090","30.410717"},
         {"Greek Row North Lot","-91.168139","30.412040"},
@@ -193,6 +214,7 @@ public class Graph {
         {"Fraternity Lane","-91.174419","30.416269"},
         {"Fraternity Circle","-91.172610","30.416467"}};
 
+        //initializing variables
         double bldlat = 0;
         double bldlong = 0;
         double lotlat = 0;
@@ -200,6 +222,7 @@ public class Graph {
         double distance = 0;
         double mindistance = 0;
 
+        //get latitude and longitude of user's building
         for (i = 0; i < bld_latlong.length; i++) {
             // accessing each element of array
             if (bld_latlong[i][0].equals(building))
@@ -209,58 +232,62 @@ public class Graph {
             }
         }  
 
+        //get latitude and longitude for lot, given
+        //that the lot is a commuter lot
         if(permit == "commuter")
         {
             for (i = 0; i < comlot_latlong.length; i++) {
-                lotlat = comlot_latlong[i][1];
-                lotlong = comlot_latlong[i][2];
-                distance = latlongconv(bldlat, bldlong, lotlat, lotlong);
-                if(distance < mindistance)
+                if (comlot_latlong[i][0] == lot)
                 {
-                    mindistance = distance;
+                    lotlat = comlot_latlong[i][1];
+                    lotlong = comlot_latlong[i][2];
+                    distance = latlongconv(bldlat, bldlong, lotlat, lotlong);
                 }
             }
         }
 
+        //get latitude and longitude for lot, given
+        //that the lot is a residential lot
         else if (permit == "residential")
         {
             for (i = 0; i < reslot_latlong.length; i++) {
-                lotlat = reslot_latlong[i][1];
-                lotlong = reslot_latlong[i][2];
-                distance = latlongconv(bldlat, bldlong, lotlat, lotlong);
-                if(distance < mindistance)
+                if (reslot_latlong[i][0] == lot)
                 {
-                    mindistance = distance;
+                    lotlat = reslot_latlong[i][1];
+                    lotlong = reslot_latlong[i][2];
+                    distance = latlongconv(bldlat, bldlong, lotlat, lotlong);
                 }
             }
         }
 
+        //get latitude and longitude for lot, given
+        //that the lot is a law lot
         else if (permit == "law")
         {
             for (i = 0; i < lawlot_latlong.length; i++) {
-                lotlat = lawlot_latlong[i][1];
-                lotlong = lawlot_latlong[i][2];
-                distance = latlongconv(bldlat, bldlong, lotlat, lotlong);
-                if(distance < mindistance)
+                if (lawlot_latlong[i][0] == lot)
                 {
-                    mindistance = distance;
+                    lotlat = lawlot_latlong[i][1];
+                    lotlong = lawlot_latlong[i][2];
+                    distance = latlongconv(bldlat, bldlong, lotlat, lotlong);
                 }
             }
         }
 
+        //get latitude and longitude for lot, given
+        //that the lot is a greek lot
         else if (permit == "greek")
         {
             for (i = 0; i < greeklot_latlong.length; i++) {
-                lotlat = greeklot_latlong[i][1];
-                lotlong = greeklot_latlong[i][2];
-                distance = latlongconv(bldlat, bldlong, lotlat, lotlong);
-                if(distance < mindistance)
+                if (greeklot_latlong[i][0] == lot)
                 {
-                    mindistance = distance;
+                    lotlat = greeklot_latlong[i][1];
+                    lotlong = greeklot_latlong[i][2];
+                    distance = latlongconv(bldlat, bldlong, lotlat, lotlong);
                 }
             }
         }
 
-        return mindistance;
+        return distance;
     }
 }

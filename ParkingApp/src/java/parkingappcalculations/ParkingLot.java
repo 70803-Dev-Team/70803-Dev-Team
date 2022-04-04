@@ -9,16 +9,15 @@ public class ParkingLot implements Comparable<ParkingLot> {
     private boolean isFavorite; //stretch feature
     private double averageRating;
     private ArrayList<Rating> lotRatingList;
-
-    
-    //Does each parking lot have an arrayList of Lot ratings at that time?
-    public ParkingLot(String lotName, double lotPercentFull, int lotCapacity) {
-        name = lotName;
-        capacity = lotCapacity;
-    }
+    private String permitType;
     
     public ParkingLot(String lotName){
         name = lotName;
+    }
+    
+    public ParkingLot(String lotName, String permit) {
+        name = lotName;
+        permitType = permit;
     }
     
     //Getter methods

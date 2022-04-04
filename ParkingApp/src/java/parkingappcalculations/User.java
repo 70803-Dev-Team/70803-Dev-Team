@@ -5,6 +5,7 @@ public class User {
     private String userName;
     private String password;
     private Preferences userPreferences;
+    private String permitType;
     
     public User(String name, String passwd){
         userName = name;
@@ -25,4 +26,8 @@ public class User {
    public int getWalkingSpeed(){
         return 4;
     }
+   
+   public String getPermit(){
+       return permitType;
+   }
 }

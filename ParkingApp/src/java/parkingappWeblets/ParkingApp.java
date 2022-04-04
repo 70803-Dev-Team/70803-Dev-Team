@@ -31,12 +31,11 @@ public class ParkingApp extends HttpServlet {
             // Anytime we have a webapp java file like this one, we need to check
             // that the user is actually valid. So we check the cookies and test
             // the user against the one in the database like so.
+            Cookie cookies[] = request.getCookies();
             DataBase db = DataBase.getInstance();
-            try {
-                Cookie cookies[] = request.getCookies(); 
-                User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
-                User dbUser = db.getUser(cookies[0].getValue());
-                if(!dbUser.compareTo(currentUser)){
+            User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
+            User dbUser = db.getUser(cookies[0].getValue());
+            if(!dbUser.compareTo(currentUser)){
                    response.sendRedirect("index.html"); 
                 } else {
                     out.println("<!DOCTYPE html>\n" +
@@ -102,9 +101,6 @@ public class ParkingApp extends HttpServlet {
                     "        <div id='map'></div>\n" +
                     "    </body>\n" +
                     "</html>");
-                }
-            } catch (Exception e){
-                response.sendRedirect("index.html");
             }
         }
     }

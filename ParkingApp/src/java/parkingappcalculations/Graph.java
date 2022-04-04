@@ -134,14 +134,14 @@ public class Graph {
 
         //List of buildings and their latitude
         //and longitude positions
-        String[][] bld_latlong = {{"PFT","30.407535","-91.179743"},
-        {"College of Buisness","30.407005","-91.178426"},
-        {"Union","30.412313","-91.177084"},
-        {"Main Library","30.414436","-91.179983"},
-        {"Cox Communications","30.414319","-91.182949"},
+        String[][] bld_latlong = {{"Patrick F Taylor","30.407535","-91.179743"},
+        {"Buisness Education Complex","30.407005","-91.178426"},
+        {"Student Union","30.412313","-91.177084"},
+        {"The Library","30.414436","-91.179983"},
+        {"Cox Auditorium","30.414319","-91.182949"},
         {"Lockett Hall","30.413428","-91.181728"},
         {"Tiger Stadium","30.412011","-91.183815"},
-        {"Art and Design","30.411928","-91.180909"},
+        {"Design Building","30.411928","-91.180909"},
         {"Law Center","30.414677","-91.174878"},
         {"UREC","30.410795","-91.169064"}};
 

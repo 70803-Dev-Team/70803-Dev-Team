@@ -19,6 +19,7 @@ public class SuggestionList {
     }
     
     public void suggestLots(ArrayList<ParkingLot> lots, String buildingName){ //iterates through a list of lots and makes a list of suggestions that will be presented to the user
+        userSuggestions = new ArrayList();
         for(ParkingLot lot : lots){
             Suggestion s = new Suggestion(lot, buildingName);
             userSuggestions.add(s);

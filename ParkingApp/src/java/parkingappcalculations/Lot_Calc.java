@@ -26,6 +26,10 @@ public class Lot_Calc {
     //     return ratings;
     // }
 
+    //Finds the amount of spots currently used by cars.
+    //Since we do not have access to cameras, we are using
+    //user ratings on how full the lot is. This takes the average
+    //of the ratings on how full the lot is. So a 3.5/5 is 70% full
     public static int Avg_Space(ParkingLot lot)
     {
         ArrayList<Integer> ratings;
@@ -45,6 +49,11 @@ public class Lot_Calc {
         return rating;
     }
 
+    //This ended up being a stretch feature we could not fully implement
+    //This function uses the capacity of the lot and the rating of how
+    //full the lot is to find out how much time it takes to find
+    //a spot. Capacity is not data we have access to.
+    //So we set the time to find a spot to 2 minutes as a placeholder.
     public static double Find_Spot_Time(int capacity, int space)
     {
         int time = 2; //set to 2 minutes until capacity feature implemented
@@ -52,6 +61,10 @@ public class Lot_Calc {
         return time;
     }
 
+    //This function calls a method in Graph.java to find the distance from
+    //the user's designated building to a given lot.
+    //We also include extra distance depending on how full the lot is
+    //to account for walking from a spot in the back of the lot to the front.
     public static int Lot_To_Building(ParkingLot lot, String building, int space, String permit)
     {
         int distance = 0;
@@ -60,6 +73,9 @@ public class Lot_Calc {
         return distance; //in feet?
     }
 
+    //This function gets the walking speed a user sets in their profile settings
+    //The walking speed is default at 3mph.
+    //Once the walking speed is retrieved, it converts mph to feet per minute.
     public static double Walk_Time(int distance)
     {
         double time = 0;
@@ -74,6 +90,11 @@ public class Lot_Calc {
         return time;
     }
 
+    //Another stretch feature we weren't able to fully implement
+    //This function would use a weather api to find the weather for
+    //the day, such as if it was raining, and modify the score based on that.
+    //On a rainy day, it can be worthwhile to spend more time looking for a
+    //good spot than immediately parking in the back and walking.
     public static double Weather_Delay()
     {
         String weather = Weather.Get_Weather();
@@ -95,12 +116,15 @@ public class Lot_Calc {
         return weather_delay;
     }
 
-    public static double CalculateTime(ParkingLot lot, String building) //ADD STRING PERMIT TO PARAMETER AND DELETE PERMIT = "COMMUTER"
+    //Finds the time it takes to find a spot, park, and walk to the building
+    //This calls the bulk of the main work.
+    //The time to park includes how long it takes to find a spot, the distance to
+    //the building from the spot, and how long it takes the user to walk to the building.
+    public static double CalculateTime(ParkingLot lot, String building, String permit)
     {
         int space = Avg_Space(lot);
         int capacity = 1;//Database.Lot_Capacity(lot);
         double time_to_find_spot = Find_Spot_Time(capacity, space);
-        String permit = "commuter";
         int distance = Lot_To_Building(lot, building, space, permit); //in feet
         double time_to_walk = Walk_Time(distance);
         double time = time_to_find_spot + time_to_walk;
@@ -108,6 +132,13 @@ public class Lot_Calc {
         return time;
     }
 
+    //An extra feature that assigns a score to each lot
+    //We know that the desirability of a lot depends on more than time.
+    //For example, on rainy days, the time to find a spot matters less
+    //than on a sunny day as a spot closer to the building is more valuable.
+    //It also accounts for other days such as game days or weekends where
+    //the parking situation is different. However, the stretch feature to
+    //modify the suggested buildings based on game days or weekends was not implemented.
     public static double CalculateScore(ParkingLot lot, String building, double time)
     {
         double score = 0;

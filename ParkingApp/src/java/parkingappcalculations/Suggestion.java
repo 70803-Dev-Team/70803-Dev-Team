@@ -13,15 +13,18 @@ public class Suggestion implements Comparable<Suggestion>{
     private ParkingLot lot;
     private String buildingName;
     private double totalParkTime;
+    private String userPermit;
     
-    
+    //Suggestions are given to the user to tell them where to park based on what takes the leat amount of time
     public Suggestion(ParkingLot parkLot, String nameOfBuilding){
         lot = parkLot;
         buildingName = nameOfBuilding;
-        totalParkTime = Lot_Calc.CalculateTime(lot, buildingName); //Static method from the lot calculator class
+        userPermit = User.getPermit();
+        totalParkTime = Lot_Calc.CalculateTime(lot, buildingName, "commuter"); //Static method from the lot calculator class
         score = Lot_Calc.CalculateScore(lot, buildingName, totalParkTime);
     }
     
+    //Getter methods
     public double getScore(){
         return score;
     }

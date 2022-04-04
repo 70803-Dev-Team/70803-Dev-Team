@@ -20,7 +20,8 @@ public class ParkingLot implements Comparable<ParkingLot> {
     public ParkingLot(String lotName){
         name = lotName;
     }
-
+    
+    //Getter methods
     public String getName() {
         return name;
     }
@@ -45,6 +46,7 @@ public class ParkingLot implements Comparable<ParkingLot> {
         lotRatingList.add(rating);
     }
     
+    //Override compareTo in order to compare parking lots alphabettically in the lotList
     @Override
     public int compareTo(ParkingLot other){
         return this.getName().compareToIgnoreCase(other.getName());

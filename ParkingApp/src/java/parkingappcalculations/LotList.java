@@ -28,5 +28,13 @@ public class LotList {
         Collections.sort(lots);
     }
     
+     public void printInfo(ArrayList<String> allBuildings){
+        for(ParkingLot p : lots){
+            String name = p.getName();
+            int capacity = p.getCapacity();
+            String closestBuilding = p.findClosestBuilding(allBuildings);
+            System.out.println("Parking Lot: " + name + "Capacity " + capacity + "ClosestBuilding: " + closestBuilding);
+        }
+    }
     
 }

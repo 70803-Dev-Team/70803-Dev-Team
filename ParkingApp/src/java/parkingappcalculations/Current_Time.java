@@ -3,11 +3,16 @@ package parkingappcalculations;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;  
 
+//Utilizing the system's ability to get current date and time
+//Used in Calandar.java
 public class Current_Time 
 {  
 
   public int month_num;
 
+  //Will return the number of the month
+  //So if it is March, it will return 3
+  //Pulls system info and parses for month
   public static int Get_Month()
   {
       String temp = Get_Time();

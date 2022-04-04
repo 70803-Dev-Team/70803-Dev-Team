@@ -49,5 +49,23 @@ public class ParkingLot implements Comparable<ParkingLot> {
     public int compareTo(ParkingLot other){
         return this.getName().compareToIgnoreCase(other.getName());
     }
+   
+   //Find the closest building to to the ParkingLot -- implement in LotList Stretch Feature
+    public String findClosestBuilding(ArrayList<String> allBuildings){
+        
+        String closestBuilding = allBuildings.get(0);
+        double closestDistance = Lot_Calc.CalculateTime(this, closestBuilding);
+        
+        for(String b : allBuildings){
+            double distance = Lot_Calc.CalculateTime(this, b);
+            if(distance < closestDistance){
+                closestBuilding = b;
+            }
+        }
+        
+        return closestBuilding;
+    }
+   
+   
 
 }

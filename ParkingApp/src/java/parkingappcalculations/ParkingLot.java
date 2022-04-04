@@ -43,7 +43,7 @@ public class ParkingLot implements Comparable<ParkingLot> {
     }
     
     public void addLotRating(double rating){
-        lotRatingList.add(rating);
+        //lotRatingList.add(rating);
     }
     
     //Override compareTo in order to compare parking lots alphabettically in the lotList
@@ -56,10 +56,10 @@ public class ParkingLot implements Comparable<ParkingLot> {
     public String findClosestBuilding(ArrayList<String> allBuildings){
         
         String closestBuilding = allBuildings.get(0);
-        double closestDistance = Lot_Calc.CalculateTime(this, closestBuilding);
+        double closestDistance = Lot_Calc.CalculateTime(this, closestBuilding, "commuter");
         
         for(String b : allBuildings){
-            double distance = Lot_Calc.CalculateTime(this, b);
+            double distance = Lot_Calc.CalculateTime(this, b, "commuter");
             if(distance < closestDistance){
                 closestBuilding = b;
             }

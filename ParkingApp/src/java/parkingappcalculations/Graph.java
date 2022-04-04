@@ -13,6 +13,9 @@ public class Graph {
     //that takes into account curvature of the Earth
     public static double latlongconv(double bldlat, double bldlong, double lotlat, double lotlong)
     {
+        if (bldlat == 0){
+            return -9999;
+        }
         double latdist = Math.abs(bldlat - lotlat);
         double latfeet = latdist*364000;
         double longdist = Math.abs(bldlong - lotlong);
@@ -24,7 +27,6 @@ public class Graph {
     //Finds the distance between a lot and the building
     //depending on the user's permit
     public static double MinDistance(String building, ParkingLot lot, String permit){
-
         //Stretch feature we weren't able to implement
         String[][] lot_to_bld = {{"Touchdown Village 1","PFT","619"},
         {"Touchdown Village 1","Lockett Hall","3696"},
@@ -219,7 +221,7 @@ public class Graph {
         double bldlong = 0;
         double lotlat = 0;
         double lotlong = 0;
-        double distance = 0;
+        double distance = -9999;
         double mindistance = 0;
 
         //get latitude and longitude of user's building
@@ -234,10 +236,10 @@ public class Graph {
 
         //get latitude and longitude for lot, given
         //that the lot is a commuter lot
-        if(permit == "commuter")
+        if(permit.equals("commuter"))
         {
             for (int i = 0; i < comlot_latlong.length; i++) {
-                if (comlot_latlong[i][0] == lot.getName())
+                if (comlot_latlong[i][0].equals(lot.getName()))
                 {
                     lotlat = Double.parseDouble(comlot_latlong[i][1]);
                     lotlong = Double.parseDouble(comlot_latlong[i][2]);
@@ -248,7 +250,7 @@ public class Graph {
 
         //get latitude and longitude for lot, given
         //that the lot is a residential lot
-        else if (permit == "residential")
+        else if (permit.equals("residential"))
         {
             for (int i = 0; i < reslot_latlong.length; i++) {
                 if (reslot_latlong[i][0].equals(lot.getName()))
@@ -262,7 +264,7 @@ public class Graph {
 
         //get latitude and longitude for lot, given
         //that the lot is a law lot
-        else if (permit == "law")
+        else if (permit.equals("law"))
         {
             for (int i = 0; i < lawlot_latlong.length; i++) {
                 if (lawlot_latlong[i][0].equals(lot.getName()))
@@ -276,10 +278,10 @@ public class Graph {
 
         //get latitude and longitude for lot, given
         //that the lot is a greek lot
-        else if (permit == "greek")
+        else if (permit.equals("greek"))
         {
             for (int i = 0; i < greeklot_latlong.length; i++) {
-                if (greeklot_latlong[i][0] == lot.getName())
+                if (greeklot_latlong[i][0].equals(lot.getName()))
                 {
                     lotlat = Double.parseDouble(greeklot_latlong[i][1]);
                     lotlong = Double.parseDouble(greeklot_latlong[i][2]);

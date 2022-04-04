@@ -166,6 +166,6 @@ public class Lot_Calc {
                 score = 0;
                 break;
         }     
-        return score;
+        return Math.abs(score);
     }
 }

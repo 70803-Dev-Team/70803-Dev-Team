@@ -18,7 +18,7 @@ public class SuggestionCompilation {
         new ParkingLot("West Stadium 2", "Commuter"),
         new ParkingLot("Bernie Moore", "Commuter"),
         new ParkingLot("Natatorium", "Commuter"),
-        new ParkingLot("Astr St. West", "Commuter"),
+        new ParkingLot("Astr St West", "Commuter"),
         new ParkingLot("Edward Gay", "Commuter"),
         new ParkingLot("Beach Volleyball Lot", "Residential"),
         new ParkingLot("Alaska St. Lot", "Residential"),
@@ -70,7 +70,7 @@ public class SuggestionCompilation {
     public SuggestionCompilation(String buildingName, String permit){
         ArrayList parkingLots = new ArrayList();
         for (ParkingLot lot : allLots){
-            if(lot.getPermit().equals(permit)){
+            if(lot.getPermit().toLowerCase().equals(permit.toLowerCase())){
                 parkingLots.add(lot);
             }
         }

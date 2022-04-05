@@ -24,7 +24,7 @@ public class GraphTester {
             System.out.println(i + " " + building + ":");
             for (String comLot : comLots){
                 ParkingLot lot = new ParkingLot(comLot);
-                System.out.printf("\n   %s - Distance: %.1f\n", comLot, Graph.MinDistance(building, lot, "commuter"));
+                System.out.printf("\n   %s - Distance: %.1f\n", comLot, Graph.MinDistance(building, lot, "Commuter"));
             }
             System.out.println("\n");
             i++;

@@ -27,6 +27,7 @@ public class Graph {
     //Finds the distance between a lot and the building
     //depending on the user's permit
     public static double MinDistance(String building, ParkingLot lot, String permit){
+        permit = permit.toLowerCase();
         //Stretch feature we weren't able to implement
         String[][] lot_to_bld = {{"Touchdown Village 1","PFT","619"},
         {"Touchdown Village 1","Lockett Hall","3696"},

@@ -49,14 +49,17 @@ public class ParkingApp extends HttpServlet {
                     "    <link href=\"https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;600;700&display=swap\" \n" +
                     "    rel=\"stylesheet\">\n" +
                     "    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\">\n" +
+                    "    <script src=\"https://kit.fontawesome.com/5d23708ef4.js\" crossorigin=\"anonymous\"></script>\n" +
                     "    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>\n" +
-                    "    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />\n" +
-                    "\n" +
-                    "    <script src=\"script.js\" defer></script>\n" +
+                    "    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />     \n" +
+                    "    <script src=\"map.js\" defer></script>\n" +
+                    "    <script src=\"autocomplete-building.js\" defer></script>\n" +
                     "</head>\n" +
                     "    <body>\n" +
                     "        <div class=\"main_box\"></div>\n" +
                     "        <header tabindex=\"0\">LSU Parking Assistant</header>\n" +
+                    "\n" +
+                    "        <!-----Side Slide-out Menu----->\n" +
                     "        <div id=\"nav-container\">\n" +
                     "            <div class=\"bg\"></div>\n" +
                     "            <div class=\"button\" tabindex=\"0\">\n" +
@@ -69,38 +72,40 @@ public class ParkingApp extends HttpServlet {
                     "                <li><a href=\"#\">General Settings</a></li>\n" +
                     "                <li><a href=\"#\">Account Settings</a></li>\n" +
                     "                <li><a href=\"#\">Help Center</a></li>\n" +
-                    "                <li><a href=\"https://github.com/70803-Dev-Team/70803-Dev-Team/issues\">Report an issue</a></li>\n" +
-                    "                <li><a href=\"#\">Log out</a></li>\n" +
-                    "                <li class=\"small\"><i class=\"fa fa-copyright\"></i>2022 70803 Dev Team, Inc. All Rights Reserved</a></li>\n" +
+                    "                <li><a href=\"https://github.com/70803-Dev-Team/70803-Dev-Team/issues\\\">Report an issue</a></li>\n" +
+                    "                <li><a href=\"index.html\">Log out</a></li>\n" +
+                    "                <li class=\"small\">\n" +
+                    "                    <i class=\"fa fa-copyright\"></i>2022 70803 Dev Team, Inc. All Rights Reserved</a>\n" +
+                    "                </li>\n" +
                     "              </ul>\n" +
                     "            </div>\n" +
                     "          </div>\n" +
-                    "            <div id=\"directionsOverlay\">\n" +
-                    "                <h1>Directions</h1>\n" +
-                    "                <form action=\"LotSugestions\" method=\"get\">\n" +
-                    "                    <p class=\"form_group\">\n" +
-                    "                        <input type=\"input\" class=\"form_field\" placeholder=\"Building you want to go to\" name=\"buildingName\">\n" +
-                    "                        <label for=\"name\" class=\"form_label\">Building you want to go to</label>\n" +
-                    "                    </p>\n" +
-                    "                <p class=\"field\">\n" +
-                    "                    <input type=\"submit\" value=\"Go!\">\n" +
+                    "\n" +
+                    "        <!-----Directions Box----->\n" +
+                    "        <div id=\"directionsOverlay\">\n" +
+                    "            <h1>Find a Lot</h1>\n" +
+                    "            <form action=\"LotSugestions\" method=\"get\">\n" +
+                    "                <p class=\"form_group\">\n" +
+                    "                    <input id=\"myInput\" type=\"text\" class=\"form_field\" placeholder=\"Building you want to go to\" name=\"buildingName\">\n" +
+                    "                    <label for=\"name\" class=\"form_label\">Building you want to go to</label>\n" +
                     "                </p>\n" +
-                    "                </form> \n" +
+                    "            <p class=\"field\">\n" +
+                    "                <input type=\"submit\" value=\"Go\">\n" +
+                    "            </p>\n" +
+                    "            </form>\n" +
+                    "            <div class=\"other-info\">\n" +
+                    "                <p class=\"listLot\">\n" +
+                    "                    <a href=\"ListLot.html\">All Parking Lots!</a>\n" +
+                    "                </p>\n" +
                     "                <p class=\"rateLot\">\n" +
-                    "                    <a href=\"RateLot\">Rate a Parking Lot</a>\n" +
+                    "                    <a href=\"RateLot\">Rate a parking spot!</a>\n" +
                     "                </p>\n" +
-                    "            \n" +
-                    "\n" +
-                    "                <!-----Side Bar Menu----->\n" +
-                    "                \n" +
-                    "                    \n" +
-                    "\n" +
-                    "                \n" +
                     "            </div>\n" +
                     "        </div>  \n" +
                     "        <div id='map'></div>\n" +
                     "    </body>\n" +
-                    "</html>");
+                    "</html>\n" +
+                    "");
             }
         }
     }

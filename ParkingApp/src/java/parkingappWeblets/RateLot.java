@@ -38,8 +38,6 @@ public class RateLot extends HttpServlet {
                 } else {
                     String lotName = request.getParameter("LotName");
                     String errorMessage = request.getParameter("ErrorMessage");
-                    out.println("<!DOCTYPE html><html><head>");            
-                    out.println("</head><body>");
                     out.println("<!DOCTYPE html>\n" +
                     "<html>\n" +
                     "<head>\n" +
@@ -53,7 +51,8 @@ public class RateLot extends HttpServlet {
                     "    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\">\n" +
                     "    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>\n" +
                     "    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />     \n" +
-                    "    <script src=\"script.js\" defer></script>\n" +
+                    "    <script src=\"map.js\" defer></script>\n" +
+                    "    <script src=\"autocomplete-parkingLot.js\" defer></script>\n" +
                     "</head>\n" +
                     "    <body>\n" +
                     "        <div class=\"main_box\"></div>\n" +
@@ -72,8 +71,8 @@ public class RateLot extends HttpServlet {
                     "                <li><a href=\"#\">General Settings</a></li>\n" +
                     "                <li><a href=\"#\">Account Settings</a></li>\n" +
                     "                <li><a href=\"#\">Help Center</a></li>\n" +
-                    "                <li><a href=\"https://github.com/70803-Dev-Team/70803-Dev-Team/issues\">Report an issue</a></li>\n" +
-                    "                <li><a href=\"#\">Log out</a></li>\n" +
+                    "                <li><a href=\"https://github.com/70803-Dev-Team/70803-Dev-Team/issues\\\">Report an issue</a></li>\n" +
+                    "                <li><a href=\"index.html\">Log out</a></li>\n" +
                     "                <li class=\"small\">\n" +
                     "                    <i class=\"fa fa-copyright\"></i>2022 70803 Dev Team, Inc. All Rights Reserved</a>\n" +
                     "                </li>\n" +
@@ -83,7 +82,7 @@ public class RateLot extends HttpServlet {
                     "\n" +
                     "        <!-----Directions Box----->\n" +
                     "        <div id=\"directionsOverlay\">\n" +
-                    "            <h1>Rating</h1>\n");
+                    "            <h1>Rating</h1>");
                     if (errorMessage != null){
                         out.println("<h2>(" + errorMessage + ")</h2>");
                     }
@@ -108,6 +107,9 @@ public class RateLot extends HttpServlet {
                     "                <input type=\"submit\" value=\"Submit\">\n" +
                     "            </p>\n" +
                     "            </form>\n" +
+                    "            <p class=\"listLot\">\n" +
+                    "                <a href=\"ListLot.html\">All Parking Lots!</a>\n" +
+                    "            </p>" +
                     "            <p class=\"rateLot\">\n" +
                     "                <a href=\"ParkingApp\">Find a parking spot!</a>\n" +
                     "            </p>\n" +

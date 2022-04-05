@@ -60,7 +60,7 @@ public class LotSugestions extends HttpServlet {
                 "    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\">\n" +
                 "    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>\n" +
                 "    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />     \n" +
-                "    <script src=\"script.js\" defer></script>\n" +
+                "    <script src=\"map.js\" defer></script>\n" +
                 "</head>\n" +
                 "    <body>\n" +
                 "        <div class=\"main_box\"></div>\n" +
@@ -79,7 +79,7 @@ public class LotSugestions extends HttpServlet {
                 "                <li><a href=\"#\">General Settings</a></li>\n" +
                 "                <li><a href=\"#\">Account Settings</a></li>\n" +
                 "                <li><a href=\"#\">Help Center</a></li>\n" +
-                "                <li><a href=\"https://github.com/70803-Dev-Team/70803-Dev-Team/issues\">Report an issue</a></li>\n" +
+                "                <li><a href=\"https://github.com/70803-Dev-Team/70803-Dev-Team/issues\\\">Report an issue</a></li>\n" +
                 "                <li><a href=\"#\">Log out</a></li>\n" +
                 "                <li class=\"small\">\n" +
                 "                    <i class=\"fa fa-copyright\"></i>2022 70803 Dev Team, Inc. All Rights Reserved</a>\n" +
@@ -91,7 +91,7 @@ public class LotSugestions extends HttpServlet {
                 "        <!-----Directions Box----->\n" +
                 "        <div id=\"directionsOverlay\">\n" +
                 "            <h1>Results</h1>\n" +
-                "                <div class=\"parkingLotList\">\n");
+                "                <div class=\"parkingLotList\">");
                 SuggestionCompilation sg = new SuggestionCompilation(buildingName, "Commuter");
                 ArrayList<Suggestion> suggestions = sg.getSuggestions();
                 for (int i = 0; i < 5; i++){
@@ -105,7 +105,7 @@ public class LotSugestions extends HttpServlet {
                         out.println(rating*20+"% full");
                     }
                     out.println(" | ");
-                    double distance = Graph.MinDistance(buildingName, suggestion.getLot(), "commuter");
+                    double distance = Graph.MinDistance(buildingName, suggestion.getLot(), "Commuter");
                     if (distance == -9999){
                         out.println("Distance Unavailable"); 
                     } else if (distance > 5280) {

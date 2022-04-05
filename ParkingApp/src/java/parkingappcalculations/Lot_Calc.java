@@ -85,7 +85,7 @@ public class Lot_Calc {
         //convert mph to f/min
         int feet_per_hour = 5280*walk_speed;
         int feet_per_minute = feet_per_hour/60;
-        time = distance/feet_per_minute;
+        time = Math.abs(distance)/feet_per_minute;
         
         return time;
     }

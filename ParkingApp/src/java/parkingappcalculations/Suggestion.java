@@ -44,9 +44,9 @@ public class Suggestion implements Comparable<Suggestion>{
     @Override
     public int compareTo(Suggestion other){
         if(this.score - other.score >= 0){
-            return 1;
-        } else {
             return -1;
+        } else {
+            return 1;
         }
     }
     

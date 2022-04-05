@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <title>ParkingApp</title>
+    <link rel="stylesheet" href="style_map.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;600;700&display=swap" 
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />     
+    <script src="map.js" defer></script>
+</head>
+    <body>
+        <div class="main_box"></div>
+        <header tabindex="0">LSU Parking Assistant</header>
+
+        <!-----Side Slide-out Menu----->
+        <div id="nav-container">
+            <div class="bg"></div>
+            <div class="button" tabindex="0">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </div>
+            <div id="nav-content" tabindex="0">
+              <ul>
+                <li><a href="#">General Settings</a></li>
+                <li><a href="#">Account Settings</a></li>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="https://github.com/70803-Dev-Team/70803-Dev-Team/issues\">Report an issue</a></li>
+                <li><a href="index.html">Log out</a></li>
+                <li class="small">
+                    <i class="fa fa-copyright"></i>2022 70803 Dev Team, Inc. All Rights Reserved</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        <!-----Directions Box----->
+        <div id="directionsOverlay">
+            <h1>All Parking Lots</h1>
+                <div class="parkingLotList">
+                    <li>
+                        <h3><a href="#">Parking Lot Result 1</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 2</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 3</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 4</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 5</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 6</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 7</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 8</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 9</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 10</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 11</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 12</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 13</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 14</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                    <li>
+                        <h3><a href="#">Parking Lot Result 15</a></h3>
+                        <h4>Closest Building:</h4>
+                    </li>
+                </div>
+            <p class="rateLot">
+                <a href="ParkingApp.html">Find a Parking Lot!</a>
+            </p>
+        </div>  
+        <div id='map'></div>
+    </body>
+</html>

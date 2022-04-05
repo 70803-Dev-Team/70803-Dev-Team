@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />     
-    <script src="script.js" defer></script>
+    <script src="map.js" defer></script>
+    <script src="autocomplete-parkingLot.js" defer></script>
 </head>
     <body>
         <div class="main_box"></div>
@@ -31,7 +32,7 @@
                 <li><a href="#">Account Settings</a></li>
                 <li><a href="#">Help Center</a></li>
                 <li><a href="https://github.com/70803-Dev-Team/70803-Dev-Team/issues\">Report an issue</a></li>
-                <li><a href="#">Log out</a></li>
+                <li><a href="index.html">Log out</a></li>
                 <li class="small">
                     <i class="fa fa-copyright"></i>2022 70803 Dev Team, Inc. All Rights Reserved</a>
                 </li>
@@ -44,7 +45,7 @@
             <h1>Rating</h1>
             <form action="ParkingApp" method="get">
                 <p class="form_group">
-                    <input type="input" class="form_field" placeholder="Name of parking lot" name="parkingLotName">
+                    <input id="myInput" type="input" class="form_field" placeholder="Name of parking lot" name="parkingLotName">
                     <label for="name" class="form_label">Name of parking lot</label>
                 </p>
                 <p class="form_group">
@@ -55,9 +56,14 @@
             <p class="field">
                 <a href="Results.html"><input type="submit" value="Submit"></a>
             </p>
-            <p class="rateLot">
-                <a href="ParkingApp.html">Find a parking spot!</a>
-            </p>
+            <div class="other-info">
+                <p class="rateLot">
+                    <a href="ParkingApp.html">Find a parking spot!</a>
+                </p>
+                <p class="listLot">
+                    <a href="ListLot.html">All Parking Lots!</a>
+                </p>
+            </div>
         </div>  
         <div id='map'></div>
     </body>

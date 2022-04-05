@@ -41,6 +41,10 @@ public class ParkingLot implements Comparable<ParkingLot> {
         isFavorite = favorite;
     }
     
+    public String getPermit() {
+        return permitType;
+    }
+    
     public void addLotRating(double rating){
         //lotRatingList.add(rating);
     }

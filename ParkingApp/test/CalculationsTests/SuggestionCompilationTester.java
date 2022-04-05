@@ -13,7 +13,7 @@ public class SuggestionCompilationTester {
         System.out.print("Enter Building to test for: ");
         Scanner scanner = new Scanner(System.in);
         String buildingName = scanner.next();
-        SuggestionCompilation sg = new SuggestionCompilation(buildingName);
+        SuggestionCompilation sg = new SuggestionCompilation(buildingName, "Commuter");
         ArrayList<Suggestion> suggestions = sg.getSuggestions();
         for (Suggestion suggestion : suggestions){
             System.out.println(suggestion.getLot().getName() + ", " + suggestion.getScore());

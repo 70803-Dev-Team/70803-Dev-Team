@@ -92,7 +92,7 @@ public class LotSugestions extends HttpServlet {
                 "        <div id=\"directionsOverlay\">\n" +
                 "            <h1>Results</h1>\n" +
                 "                <div class=\"parkingLotList\">\n");
-                SuggestionCompilation sg = new SuggestionCompilation(buildingName);
+                SuggestionCompilation sg = new SuggestionCompilation(buildingName, "Commuter");
                 ArrayList<Suggestion> suggestions = sg.getSuggestions();
                 for (int i = 0; i < 5; i++){
                     Suggestion suggestion = suggestions.get(i);

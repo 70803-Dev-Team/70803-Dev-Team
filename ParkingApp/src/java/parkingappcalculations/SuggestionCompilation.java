@@ -67,10 +67,12 @@ public class SuggestionCompilation {
     
     private ArrayList suggestions;
     
-    public SuggestionCompilation(String buildingName){
+    public SuggestionCompilation(String buildingName, String permit){
         ArrayList parkingLots = new ArrayList();
         for (ParkingLot lot : allLots){
-            parkingLots.add(lot);
+            if(lot.getPermit().equals(permit)){
+                parkingLots.add(lot);
+            }
         }
         SuggestionList suggestionList = new SuggestionList(parkingLots, buildingName);
         suggestions = suggestionList.getUserSuggestions();

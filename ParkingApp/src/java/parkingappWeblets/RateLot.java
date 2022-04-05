@@ -107,12 +107,14 @@ public class RateLot extends HttpServlet {
                     "                <input type=\"submit\" value=\"Submit\">\n" +
                     "            </p>\n" +
                     "            </form>\n" +
+                    "        <div class=\"other-info\">\n" +
                     "            <p class=\"listLot\">\n" +
                     "                <a href=\"ListLot.html\">All Parking Lots!</a>\n" +
                     "            </p>" +
                     "            <p class=\"rateLot\">\n" +
                     "                <a href=\"ParkingApp\">Find a parking spot!</a>\n" +
                     "            </p>\n" +
+                    "            </div>\n" +
                     "        </div>  \n" +
                     "        <div id='map'></div>\n" +
                     "    </body>\n" +

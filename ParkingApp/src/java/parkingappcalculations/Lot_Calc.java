@@ -65,7 +65,7 @@ public class Lot_Calc {
     //the user's designated building to a given lot.
     //We also include extra distance depending on how full the lot is
     //to account for walking from a spot in the back of the lot to the front.
-    public static double Lot_To_Building(ParkingLot lot, String building, int space, String permit)
+    public static double Lot_To_Building(ParkingLot lot, String building, double space, String permit)
     {
         double distance = 0;
         distance = Graph.MinDistance(building, lot, permit);

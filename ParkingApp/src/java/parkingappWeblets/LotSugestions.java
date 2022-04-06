@@ -100,13 +100,13 @@ public class LotSugestions extends HttpServlet {
                         String suggestionName = suggestion.getLot().getName();
                         out.println("<h2>"+ suggestionName +"</h2>\n");
                         ArrayList<Integer> ratings = db.aggregateRatings(suggestionName);
-                        int ratingSum = 0;
+                        double ratingSum = 0;
                         int j = 0;
                         for (int rating : ratings) {
                             ratingSum = ratingSum + rating;
                             j++;
                         }
-                        int rating = -9999;
+                        double rating = -9999;
                         if (j > 0){
                            rating = ratingSum/j; 
                         } else {
@@ -115,7 +115,7 @@ public class LotSugestions extends HttpServlet {
                         if (rating == -9999){
                             out.println("Rating Unavailable");
                         }else{
-                            out.println(rating*20+"% full");
+                            out.println(String.format("%.0f",rating*20)+"% full");
                         }
                         out.println(" | ");
                         double distance = Graph.MinDistance(buildingName, suggestion.getLot(), "Commuter");

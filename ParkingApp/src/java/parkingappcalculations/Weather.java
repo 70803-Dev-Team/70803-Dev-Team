@@ -3,7 +3,11 @@ package parkingappcalculations;
 //Note: for future implementation, make a real weather API, we are down a team member so this was taken off the lsit
 public class Weather {  
 
-    public static String Randomize_Weather(int month)
+    public Weather(){
+        
+    }
+    
+    public String Randomize_Weather(int month)
     {
         String weather = "";
         if(month < 2 || month > 10) //winter
@@ -25,7 +29,7 @@ public class Weather {
         return weather;
     }
 
-    public static String Get_Weather()
+    public String Get_Weather()
     {
         String weather = "Rainy";
         int month = Current_Time.Get_Month();

@@ -5,19 +5,23 @@ import java.util.ArrayList;
 
 public class Lot_Calc {
 
-    public double space;
-    public double capacity;
-    public double time_to_find_spot;
-    public double distance;
-    public double time_to_walk;
-    public double weather_delay;
+    private double space;
+    private double capacity;
+    private double time_to_find_spot;
+    private double distance;
+    private double time_to_walk;
+    private double weather_delay;
+    private Weather theWeather;
     
+    public Lot_Calc(){
+        theWeather = new Weather();
+    }
 
     //Finds the amount of spots currently used by cars.
     //Since we do not have access to cameras, we are using
     //user ratings on how full the lot is. This takes the average
     //of the ratings on how full the lot is. So a 3.5/5 is 70% full
-    public static double Avg_Space(ParkingLot lot)
+    public double Avg_Space(ParkingLot lot)
     {
         ArrayList<Integer> ratings;
         double rating = 4;
@@ -41,7 +45,7 @@ public class Lot_Calc {
     //full the lot is to find out how much time it takes to find
     //a spot. Capacity is not data we have access to.
     //So we set the time to find a spot to 2 minutes as a placeholder.
-    public static double Find_Spot_Time(double capacity, double space)
+    public double Find_Spot_Time(double capacity, double space)
     {
         double time = 2; //set to 2 minutes until capacity feature implemented
         //time = space/capacity;
@@ -52,7 +56,7 @@ public class Lot_Calc {
     //the user's designated building to a given lot.
     //We also include extra distance depending on how full the lot is
     //to account for walking from a spot in the back of the lot to the front.
-    public static double Lot_To_Building(ParkingLot lot, String building, double space, String permit)
+    public double Lot_To_Building(ParkingLot lot, String building, double space, String permit)
     {
         double distance = 0;
         distance = Graph.MinDistance(building, lot, permit);
@@ -63,7 +67,7 @@ public class Lot_Calc {
     //This function gets the walking speed a user sets in their profile settings
     //The walking speed is default at 4mph.
     //Once the walking speed is retrieved, it converts mph to feet per minute.
-    public static double Walk_Time(int distance)
+    public double Walk_Time(int distance)
     {
         double time = 0;
         User user = new User("user", "password"); //placeholder user
@@ -82,9 +86,9 @@ public class Lot_Calc {
     //the day, such as if it was raining, and modify the score based on that.
     //On a rainy day, it can be worthwhile to spend more time looking for a
     //good spot than immediately parking in the back and walking.
-    public static double Weather_Delay()
+    public double Weather_Delay()
     {
-        String weather = Weather.Get_Weather();
+        String weather = theWeather.Get_Weather();
         int weather_delay = 0;
         
         if(weather == "rainy")
@@ -107,7 +111,7 @@ public class Lot_Calc {
     //This calls the bulk of the main work.
     //The time to park includes how long it takes to find a spot, the distance to
     //the building from the spot, and how long it takes the user to walk to the building.
-    public static double CalculateTime(ParkingLot lot, String building, String permit)
+    public double CalculateTime(ParkingLot lot, String building, String permit)
     {
         double space = Avg_Space(lot);
         double capacity = 1;//Database.Lot_Capacity(lot);
@@ -126,7 +130,7 @@ public class Lot_Calc {
     //It also accounts for other days such as game days or weekends where
     //the parking situation is different. However, the stretch feature to
     //modify the suggested buildings based on game days or weekends was not implemented.
-    public static double CalculateScore(ParkingLot lot, String building, double time)
+    public double CalculateScore(ParkingLot lot, String building, double time)
     {
         double score = 0;
         String day_type = Calandar.Day_Type();

@@ -58,11 +58,12 @@ public class ParkingLot implements Comparable<ParkingLot> {
    //Find the closest building to to the ParkingLot -- implement in LotList Stretch Feature
     public String findClosestBuilding(ArrayList<String> allBuildings){
         
+        Lot_Calc lc = new Lot_Calc();
         String closestBuilding = allBuildings.get(0);
-        double closestDistance = Lot_Calc.CalculateTime(this, closestBuilding, "commuter");
+        double closestDistance = lc.CalculateTime(this, closestBuilding, "commuter");
         
         for(String b : allBuildings){
-            double distance = Lot_Calc.CalculateTime(this, b, "commuter");
+            double distance = lc.CalculateTime(this, b, "commuter");
             if(distance < closestDistance){
                 closestBuilding = b;
             }

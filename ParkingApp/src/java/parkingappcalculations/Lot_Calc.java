@@ -12,19 +12,6 @@ public class Lot_Calc {
     public double time_to_walk;
     public double weather_delay;
     
-    // public static int Lot_Capacity(String lot)
-    // {
-    //     int capacity = 0;
-    //     capacity = Database.();
-    //     return capacity;
-    // }
-    
-    // public static int[] Aggregate_Ratings(String lot)
-    // {
-    //     int ratings[]; 
-    //     ratings = database.();
-    //     return ratings;
-    // }
 
     //Finds the amount of spots currently used by cars.
     //Since we do not have access to cameras, we are using

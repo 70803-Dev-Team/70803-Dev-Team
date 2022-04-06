@@ -8,7 +8,7 @@ public class SuggestionCompilation {
         private ParkingLot[] allLots = {new ParkingLot("Touchdown Village West", "Commuter"), 
         new ParkingLot("Front 9", "Commuter"),
         new ParkingLot("Touchdown Village East", "Commuter"),
-        new ParkingLot("West Parker BLVD", "Commuter"),
+        new ParkingLot("West Parker Blvd", "Commuter"),
         new ParkingLot("Parker Coliseum", "Commuter"),
         new ParkingLot("South Stadium East", "Commuter"),
         new ParkingLot("South Stadium West", "Commuter"),

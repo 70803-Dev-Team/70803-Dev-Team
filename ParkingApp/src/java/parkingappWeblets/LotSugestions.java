@@ -93,13 +93,25 @@ public class LotSugestions extends HttpServlet {
                     "        <div id=\"directionsOverlay\">\n" +
                     "            <h1>Results</h1>\n" +
                     "                <div class=\"parkingLotList\">");
-                    SuggestionCompilation sg = new SuggestionCompilation(buildingName, "Commuter");
+                    SuggestionCompilation sg = new SuggestionCompilation(buildingName, dbUser.getPermit());
                     ArrayList<Suggestion> suggestions = sg.getSuggestions();
                     for (int i = 0; i < 5; i++){
                         Suggestion suggestion = suggestions.get(i);
                         String suggestionName = suggestion.getLot().getName();
                         out.println("<h2>"+ suggestionName +"</h2>\n");
-                        int rating = db.getRating(suggestionName);
+                        ArrayList<Integer> ratings = db.aggregateRatings(suggestionName);
+                        int ratingSum = 0;
+                        int j = 0;
+                        for (int rating : ratings) {
+                            ratingSum = ratingSum + rating;
+                            j++;
+                        }
+                        int rating = -9999;
+                        if (j > 0){
+                           rating = ratingSum/j; 
+                        } else {
+                            rating = db.getRating(suggestionName);
+                        }
                         if (rating == -9999){
                             out.println("Rating Unavailable");
                         }else{

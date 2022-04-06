@@ -11,6 +11,12 @@ public class User {
         userName = name;
         password = passwd;
     }
+    
+    public User(String name, String passwd, String permit){
+        userName = name;
+        password = passwd;
+        permitType = permit;
+    }
     public boolean isValidUser(){
        return userName != null;
     }

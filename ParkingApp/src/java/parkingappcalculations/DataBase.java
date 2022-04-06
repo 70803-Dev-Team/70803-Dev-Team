@@ -39,24 +39,27 @@ public class DataBase {
     
     public User getUser(String userName){
         String password = null;
+        String permitType = null;
         try {
             ResultSet rs = statement.executeQuery("SELECT * FROM users WHERE UserName=\"" + userName + "\";");
             rs.next();
             password = rs.getString("Password");
+            permitType = rs.getString("PermitType");
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
         if (password == null){
             return null;
         }
-        User user = new User(userName, password);
+        User user = new User(userName, password, permitType);
         return user;
     }
     
-        public void addUser(String userName, String password){
+        public void addUser(String userName, String password, String permitType){
         try {
-            statement.execute("INSERT INTO users (UserName, Password)"
-                    + " VALUES (\"" + userName + "\", \"" + password + "\");");
+            statement.execute("INSERT INTO users (UserName, Password, PermitType)"
+                    + " VALUES (\"" + userName + "\", \"" + password + "\", \"" + permitType + "\");");
         } catch (Exception e) {
             e.printStackTrace();
         }

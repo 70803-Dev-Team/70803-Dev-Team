@@ -34,22 +34,15 @@ public class AccountRegistration extends HttpServlet {
                     "    <!-----Create Account Form----->\n" +
                     "    <div class=\"background-img\">\n" +
                     "        <div class=\"content\">\n" +
-                    "            <header>Create Account</header>\n" +
-                    "            <form action=\"AccountRegistration\">\n" +
+                    "            <header>Create Account</header>" +
                     "             <h2>" +
                                     errorMessage +
-                    "             </h2>" +
+                    "<form action=\"AccountRegistration\">\n" +
                     "                <div class=\"field space\">\n" +
-                    "                    <input type=\"text2\" class=\"name\" placeholder=\"First Name\">\n" +
+                    "                    <input type=\"text2\" class=\"name\" name=\"permitType\" required placeholder=\"Permit Type\">\n" +
                     "                </div>\n" +
                     "                <div class=\"field space\">\n" +
-                    "                    <input type=\"text2\"class=\"name\" placeholder=\"Last Name\">\n" +
-                    "                </div>\n" +
-                    "                <div class=\"field space\">\n" +
-                    "                    <input type=\"text2\" class=\"email\" name=\"userName\" required placeholder=\"Email Address\">\n" +
-                    "                </div>\n" +
-                    "                <div class=\"field space\">\n" +
-                    "                    <input type=\"text2\" class=\"phone\" placeholder=\"Phone Number\">\n" +
+                    "                    <input type=\"text2\" class=\"email\" name=\"userName\" required placeholder=\"User Name\">\n" +
                     "                </div>\n" +
                     "                <div class=\"field space\">\n" +
                     "                    <input type=\"password\" class=\"password\" name=\"password1\" required placeholder=\"Password\">\n" +
@@ -95,28 +88,19 @@ public class AccountRegistration extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DataBase db = DataBase.getInstance();
-        try {
-            Cookie cookies[] = request.getCookies(); 
-            User currentUser = new User(cookies[0].getValue(), cookies[1].getValue());
-            User dbUser = db.getUser(cookies[0].getValue());
-            if(!dbUser.compareTo(currentUser)){
-               response.sendRedirect("index.html"); 
-            }
-        } catch (Exception e){
-            response.sendRedirect("index.html");
-        }
         try ( PrintWriter out = response.getWriter()) {
             out.println(displayLoginForm(""));
             String userName = request.getParameter("userName");
             String password1 = request.getParameter("password1");
             String password2 = request.getParameter("password2");
+            String permitType = request.getParameter("permitType");
             if (password1.equals(password2)){
                 User newUser = new User(userName, password1);
                 User databaseUser = db.getUser(userName);
                 if (databaseUser != null){
                     out.println(displayLoginForm("Username Already Taken"));
                 } else {
-                    db.addUser(userName, password1);
+                    db.addUser(userName, password1, permitType);
                     response.sendRedirect("Login?userName=" + userName + "&password=" + password1);
                 }
                 

@@ -74,13 +74,13 @@ public class Lot_Calc {
     }
 
     //This function gets the walking speed a user sets in their profile settings
-    //The walking speed is default at 3mph.
+    //The walking speed is default at 4mph.
     //Once the walking speed is retrieved, it converts mph to feet per minute.
     public static double Walk_Time(int distance)
     {
         double time = 0;
-        User user = new User("user", "password");
-        int walk_speed = user.getWalkingSpeed();
+        User user = new User("user", "password"); //placeholder user
+        int walk_speed = user.getWalkingSpeed(); //returns 4 mph
         
         //convert mph to f/min
         int feet_per_hour = 5280*walk_speed;

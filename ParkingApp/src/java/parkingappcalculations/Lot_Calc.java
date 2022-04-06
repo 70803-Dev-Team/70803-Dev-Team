@@ -33,7 +33,7 @@ public class Lot_Calc {
     public static int Avg_Space(ParkingLot lot)
     {
         ArrayList<Integer> ratings;
-        int rating = 0;
+        int rating = 4;
         DataBase db = DataBase.getInstance();
         ratings = db.aggregateRatings(lot.getName());
         int rating_count = ratings.size();

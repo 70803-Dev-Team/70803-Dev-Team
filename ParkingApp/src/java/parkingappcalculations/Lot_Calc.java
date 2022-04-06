@@ -54,9 +54,9 @@ public class Lot_Calc {
     //full the lot is to find out how much time it takes to find
     //a spot. Capacity is not data we have access to.
     //So we set the time to find a spot to 2 minutes as a placeholder.
-    public static double Find_Spot_Time(int capacity, int space)
+    public static double Find_Spot_Time(double capacity, double space)
     {
-        int time = 2; //set to 2 minutes until capacity feature implemented
+        double time = 2; //set to 2 minutes until capacity feature implemented
         //time = space/capacity;
         return time;
     }

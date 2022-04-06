@@ -69,7 +69,7 @@ public class Lot_Calc {
     {
         double distance = 0;
         distance = Graph.MinDistance(building, lot, permit);
-        distance = distance+ 100 * space; //5000ft + 400ft for walking through lot
+        distance = distance+ 50*space; //5000ft + some ft for walking through lot
         return distance; //in feet?
     }
 

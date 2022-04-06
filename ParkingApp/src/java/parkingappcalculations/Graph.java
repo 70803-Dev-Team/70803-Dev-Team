@@ -153,7 +153,7 @@ public class Graph {
         String[][] comlot_latlong = {{"Touchdown Village West","-91.179830","30.405662"},
         {"Front 9","-91.178971","30.405319"},
         {"Touchdown Village East","-91.176962","30.405230"},
-        {"West Parker BLVD","-91.174721","30.404495"},
+        {"West Parker Blvd","-91.174721","30.404495"},
         {"Parker Coliseum","-91.175234","30.405229"},
         {"South Stadium East","-91.184266","30.410261"},
         {"South Stadium West","-91.185605","30.410408"},

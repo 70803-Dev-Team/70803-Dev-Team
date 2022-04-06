@@ -30,10 +30,10 @@ public class Lot_Calc {
     //Since we do not have access to cameras, we are using
     //user ratings on how full the lot is. This takes the average
     //of the ratings on how full the lot is. So a 3.5/5 is 70% full
-    public static int Avg_Space(ParkingLot lot)
+    public static double Avg_Space(ParkingLot lot)
     {
         ArrayList<Integer> ratings;
-        int rating = 4;
+        double rating = 4;
         DataBase db = DataBase.getInstance();
         ratings = db.aggregateRatings(lot.getName());
         int rating_count = ratings.size();
@@ -122,8 +122,8 @@ public class Lot_Calc {
     //the building from the spot, and how long it takes the user to walk to the building.
     public static double CalculateTime(ParkingLot lot, String building, String permit)
     {
-        int space = Avg_Space(lot);
-        int capacity = 1;//Database.Lot_Capacity(lot);
+        double space = Avg_Space(lot);
+        double capacity = 1;//Database.Lot_Capacity(lot);
         double time_to_find_spot = Find_Spot_Time(capacity, space);
         double distance = Lot_To_Building(lot, building, space, permit); //in feet
         double time_to_walk = Walk_Time((int)distance);
@@ -144,7 +144,7 @@ public class Lot_Calc {
         double score = 0;
         String day_type = Calandar.Day_Type();
         double weather_delay = Weather_Delay();
-        int space = Avg_Space(lot);
+        double space = Avg_Space(lot);
         double capacity = 1;//Database.Lot_Capacity(lot);
         double fullness = space/capacity;
         

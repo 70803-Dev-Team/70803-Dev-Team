@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class Lot_Calc {
 
-    public int space;
-    public int capacity;
+    public double space;
+    public double capacity;
     public double time_to_find_spot;
     public double distance;
     public double time_to_walk;

@@ -19,14 +19,12 @@ const bounds = [
 ];
 map.setMaxBounds(bounds);
 
-
 // Get current location of user
 map.addControl(new mapboxgl.GeolocateControl({ 
     positionOption:{ 
         enableHighAccuracy: true 
     }, trackUserLocation: true 
 }), 'bottom-right');
-
 
 // Commuter Parking Lots
 var geojson = {

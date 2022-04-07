@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <title>LSU Parking Assistant</title>
+    <link rel="stylesheet" href="style-settings.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;600;700&display=swap" 
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+<body>
+    <section>
+    <header tabindex="0">
+        <a href="ParkingApp.html">LSU Parking Assistant</a>
+    </header>
+    <nav class="menu"> 
+        <div id="nav-container">
+            <div class="bg"></div>
+            <div class="button" tabindex="0">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </div>
+            <div id="nav-content" tabindex="0">
+                <ul>
+                    <li><a href="general-settings.html">General Settings</a></li>
+                    <li><a href="account-settings.html">Account Settings</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="https://github.com/70803-Dev-Team/70803-Dev-Team/issues\">Report an issue</a></li>
+                    <li><a href="index.html">Log out</a></li>
+                    <li class="small">
+                        <i class="fa fa-copyright"></i>2022 70803 Dev Team, Inc. All Rights Reserved</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </section>
+    <section class="wrapper">
+        <h2>Account Settings</h2>
+            <div class="inner-wrapper">
+                <h3>Account Details</h3>
+                <form class="AccountRegistration">
+                    <div class="field space">
+                        <input type="text2" class="name" placeholder="First Name">
+                    </div>
+                    <div class="field space">
+                        <input type="text2"class="name" placeholder="Last Name">
+                    </div>
+                    <div class="field space">
+                        <input type="text2" class="username" name="userName" required placeholder="Username">
+                    </div>
+                    <div class="field space">
+                        <input type="password" class="password" name="password1" required placeholder="Password">
+                    </div>
+                    <div class="field space">
+                        <input type="password" class="password" name="password2" required placeholder="Re-type Password">
+                    </div>
+                    <div class="changes">
+                        <div class="accept">
+                            <a href="#">Confirm changes</a>
+                        </div>
+                        <div class="deny">
+                            <a href="#">Cancel changes</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </section>
+    </body>
+</html>

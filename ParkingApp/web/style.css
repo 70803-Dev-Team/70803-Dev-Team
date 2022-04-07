@@ -370,17 +370,17 @@ h3{
   margin-top: 16px;
 }
 
-.pass{
+.forgot-password{
   text-align: left;
   margin: 10px 0;
 }
 
-.pass a{
+.forgot-password a{
   color: white;
   text-decoration: none;
 }
 
-.pass:hover a{
+.forgot-password:hover a{
   text-decoration: underline;
 }
 
@@ -451,7 +451,7 @@ input[type="submit"]:hover{
   font-size: 18px;
 }
 
-.signup a {
+.signup a{
   color: rgb(159, 164, 168);
   text-decoration: none;
 }
@@ -459,11 +459,6 @@ input[type="submit"]:hover{
 .signup a:hover{
   text-decoration: underline;
   color: #906ebd;
-}
-
-/*****Create Account Page*****/
-input .button{
-  padding-top: 15px;
 }
 
 /*****Contact Page*****/

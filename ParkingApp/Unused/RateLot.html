@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="style_map.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;600;700&display=swap" 
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;600;700&display=swap"
     rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />     
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
     <script src="map.js" defer></script>
+    <script src="autocomplete-parkingLot.js" defer></script>
 </head>
     <body>
         <div class="main_box"></div>
@@ -41,18 +42,29 @@
 
         <!-----Directions Box----->
         <div id="directionsOverlay">
-            <h1>Results</h1>
-                <div class="parkingLotList">
-                    <li><a href="#">Parking Lot Result 1</a></li>
-                    <li><a href="#">Parking Lot Result 2</a></li>
-                    <li><a href="#">Parking Lot Result 3</a></li>
-                    <li><a href="#">Parking Lot Result 4</a></li>
-                    <li><a href="#">Parking Lot Result 5</a></li>
-                </div>
-            <p class="rateLot">
-                <a href="ParkingApp.html">Find a Parking Lot!</a>
+            <h1>Rating</h1>
+            <form action="ParkingApp" method="get">
+                <p class="form_group">
+                    <input id="myInput" type="input" class="form_field" placeholder="Name of parking lot" name="parkingLotName">
+                    <label for="name" class="form_label">Name of parking lot</label>
+                </p>
+                <p class="form_group">
+                    <input type="input" class="form_field" placeholder="Rate 1-5 (1 being empty)" name="parkingLotRating">
+                    <label for="name" class="form_label">Rate 1-5 (1 being empty)</label>
+                </p>
+            </form>
+            <p class="field">
+                <a href="Results.html"><input type="submit" value="Submit"></a>
             </p>
-        </div>  
+            <div class="other-info">
+                <p class="rateLot">
+                    <a href="ParkingApp.html">Find a parking spot!</a>
+                </p>
+                <p class="listLot">
+                    <a href="ListLot.html">All Parking Lots!</a>
+                </p>
+            </div>
+        </div>
         <div id='map'></div>
     </body>
 </html>

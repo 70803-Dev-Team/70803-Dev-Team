@@ -1,4 +1,4 @@
-//package parkingappcalculations;
+package parkingappcalculations;
 
 // @author Sam Hildebrand
 public class User {

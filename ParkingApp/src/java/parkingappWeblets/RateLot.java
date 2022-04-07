@@ -68,10 +68,10 @@ public class RateLot extends HttpServlet {
                     "            </div>\n" +
                     "            <div id=\"nav-content\" tabindex=\"0\">\n" +
                     "              <ul>\n" +
-                    "                <li><a href=\"#\">General Settings</a></li>\n" +
-                    "                <li><a href=\"#\">Account Settings</a></li>\n" +
+                    "                <li><a href=\"general-settings.html\">General Settings</a></li>\n" +
+                    "                <li><a href=\"account-settings.html\">Account Settings</a></li>\n" +
                     "                <li><a href=\"#\">Help Center</a></li>\n" +
-                    "                <li><a href=\"https://github.com/70803-Dev-Team/70803-Dev-Team/issues\\\">Report an issue</a></li>\n" +
+                    "                <li><a href=\"https://github.com/70803-Dev-Team/70803-Dev-Team/issues\">Report an issue</a></li>" +
                     "                <li><a href=\"index.html\">Log out</a></li>\n" +
                     "                <li class=\"small\">\n" +
                     "                    <i class=\"fa fa-copyright\"></i>2022 70803 Dev Team, Inc. All Rights Reserved</a>\n" +

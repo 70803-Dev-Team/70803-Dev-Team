@@ -1,4 +1,3 @@
-
 package parkingappcalculations;
 
 import java.util.*;

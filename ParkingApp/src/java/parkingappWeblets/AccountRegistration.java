@@ -52,6 +52,7 @@ public class AccountRegistration extends HttpServlet {
                     "                </div>\n" +
                     "                \n" +
                     "                <div class=\"pass\"></div>\n" +
+                    "                <br>"+
                     "                <div class=\"field\">\n" +
                     "                    <input type=\"submit\" class=\"button\" value=\"Create Account\">\n" +
                     "                    \n" +

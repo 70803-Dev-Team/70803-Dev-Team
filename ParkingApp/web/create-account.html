@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial scale=1.0">
     <title>LSU Parking Assistant</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="create-account.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;600;700&display=swap" 
@@ -20,10 +20,13 @@
             <header>Create Account</header>
             <form action="AccountRegistration">
                 <div class="field space">
-                    <input type="text2" class="name" name="permitType" required placeholder="Permit Type">
+                    <input type="text2" class="name" placeholder="First Name">
                 </div>
                 <div class="field space">
-                    <input type="text2" class="email" name="userName" required placeholder="User Name">
+                    <input type="text2"class="name" placeholder="Last Name">
+                </div>
+                <div class="field space">
+                    <input type="text2" class="username" name="userName" required placeholder="Username">
                 </div>
                 <div class="field space">
                     <input type="password" class="password" name="password1" required placeholder="Password">
@@ -31,11 +34,32 @@
                 <div class="field space">
                     <input type="password" class="password" name="password2" required placeholder="Re-type Password">
                 </div>
+                <div class="parking-pass">
+                    <h3>What parking pass do you own?</h3>
+                    <label>
+                        <input type="radio" name="radio" checked/>
+                        <span>Commuter</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="radio" checked/>
+                        <span>Residential</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="radio" checked/>
+                        <span>Greek</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="radio" checked/>
+                        <span>Law</span>
+                    </label>
+                </div>
                 
                 <div class="pass"></div>
                 <div class="field">
-                    <input type="submit" class="button" value="Create Account">
-                    
+                    <input type="submit" class="button" value="Create Account">                    
+                </div>
+                <div class="signup">Already have an Account?
+                    <a href="login.html">Login</a>
                 </div>
             </form>
         </div>

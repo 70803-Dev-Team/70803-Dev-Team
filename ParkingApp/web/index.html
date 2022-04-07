@@ -15,17 +15,20 @@
 <!-----Website Header----->
     <section class="header">
         <nav>
-            <a href="index.html"><img src="Images/company-logo1.png"></a>
+        <img src="Images/company-logo1.png">
             <div class="nav-links" id="navLinks">
-                <i class="fa fa-times" onclick="hideMenu"></i>
-                <ul>
+                <div class="button" tabindex="0">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </div>
+                <ul id="slideMenu">
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="about.html">ABOUT</a></li>
                     <li><a href="login.html">PARK NOW</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                 </ul>
             </div>
-            <i class="fa fa-bars" onclick="showMenu"></i>
         </nav>
     <div class="text-box">
         <h1>Welcome, to the LSU Parking Assistant!</h1>
@@ -64,7 +67,6 @@
         </div>
     </section>
 
-
 <!-----Testimonies Section----->
 <section>
     <div class="wrapper">
@@ -76,7 +78,7 @@
             <div class="card">
                 <img src="Images/testi1.jpeg">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec augue ex. Donec et sollicitudin.</p>
-                <h3>Johnathon S.</h3>
+                <h3>Johnathan S.</h3>
                 <h4>Graduate Student</h4>
             </div>
             <div class="card">
@@ -106,17 +108,5 @@
         </div>
         <p><i class="fa fa-copyright"></i>2022 70803 Dev Team, Inc. All Rights Reserved</p>
     </section>
-
-<!-----Javascript for the toggle menu----->
-<script>
-    var navLinks = document.getElementById("navLinks");
-    function showMenu(){
-        navLinks.style.right = "0";
-    }
-    function hideMenu(){
-        navLinks.style.right = "-200px";
-    }
-</script>
-
 </body>
 </html>

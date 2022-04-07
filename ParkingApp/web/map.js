@@ -26,6 +26,7 @@ map.addControl(new mapboxgl.GeolocateControl({
     }, trackUserLocation: true 
 }), 'bottom-right');
 
+
 // Commuter Parking Lots
 var geojson = {
     type: 'Commuter Collection',

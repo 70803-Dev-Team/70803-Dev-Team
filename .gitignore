@@ -2,3 +2,4 @@
 /ParkingApp/build/
 /ParkingApp/dist/
 *.properties
+/ParkingApp/src/java/parkingappcalculations/LoginCredentials.xml

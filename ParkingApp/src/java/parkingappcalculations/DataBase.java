@@ -3,13 +3,15 @@ package parkingappcalculations;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.io.File;
+import java.util.Scanner;
 
 // @author Sam Hildebrand
 public class DataBase { 
-    private final String userName="parking-user";
-    private final String password="70803";
-    private final String url="jdbc:mariadb://lsuparking.tech:3306/parkingapp";
-    private final String driver="org.mariadb.jdbc.Driver";
+    private String userName;
+    private String password;
+    private String url;
+    private String driver;
     private Connection con;
     private Statement statement;
     
@@ -20,6 +22,12 @@ public class DataBase {
   
     private DataBase(){
         try {
+            File credentialsFile = new File("LoginCredentials.txt");
+            Scanner sc = new Scanner(credentialsFile);
+            userName = sc.next();
+            password = sc.next();
+            url = sc.next();
+            driver = sc.next();
             Class.forName(driver);
             con=DriverManager.getConnection(url, userName, password);
             statement = con.createStatement();

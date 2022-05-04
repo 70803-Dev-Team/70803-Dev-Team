@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class DataBaseTester {
 
     public static void main(String args[]) throws FileNotFoundException {
-            File credentialsFile = new File("LoginCredentials.txt");
+            File credentialsFile = new File("/LoginCredentials.txt");
             Scanner sc = new Scanner(credentialsFile);
             String userName = sc.next();
             String password = sc.next();

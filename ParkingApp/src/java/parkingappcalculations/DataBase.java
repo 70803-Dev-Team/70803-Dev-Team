@@ -22,7 +22,7 @@ public class DataBase {
   
     private DataBase(){
         try {
-            File credentialsFile = new File("LoginCredentials.txt");
+            File credentialsFile = new File("/LoginCredentials.txt");
             Scanner sc = new Scanner(credentialsFile);
             userName = sc.next();
             password = sc.next();
